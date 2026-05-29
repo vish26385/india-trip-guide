@@ -14,8 +14,43 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// export const metadata = {
+//   title: "IndiaTripGuide - Premium India Travel Guides & Itineraries",
+//   description:
+//     "Discover India's best travel destinations, itineraries, travel tips, budget guides, and premium travel experiences.",
+
+//   keywords: [
+//     "India travel",
+//     "India trip planner",
+//     "Udaipur travel guide",
+//     "Goa itinerary",
+//     "India travel blog",
+//     "IndiaTripGuide",
+//   ],
+
+//   openGraph: {
+//     title: "IndiaTripGuide",
+//     description:
+//       "Premium India travel guides, itineraries, and travel tips.",
+//     url: "https://www.indiatripguide.com",
+//     siteName: "IndiaTripGuide",
+//     locale: "en_IN",
+//     type: "website",
+//   },
+
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "IndiaTripGuide",
+//     description:
+//       "Premium India travel guides, itineraries, and travel tips.",
+//   },
+// };
+
 export const metadata = {
+  metadataBase: new URL("https://www.indiatripguide.com"),
+
   title: "IndiaTripGuide - Premium India Travel Guides & Itineraries",
+
   description:
     "Discover India's best travel destinations, itineraries, travel tips, budget guides, and premium travel experiences.",
 
@@ -29,20 +64,34 @@ export const metadata = {
   ],
 
   openGraph: {
-    title: "IndiaTripGuide",
+    title: "IndiaTripGuide - Premium India Travel Guides",
     description:
-      "Premium India travel guides, itineraries, and travel tips.",
+      "Premium India travel guides, itineraries, budget tips, and destination inspiration.",
     url: "https://www.indiatripguide.com",
     siteName: "IndiaTripGuide",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "IndiaTripGuide - Premium India Travel Guides",
+      },
+    ],
     locale: "en_IN",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "IndiaTripGuide",
+    title: "IndiaTripGuide - Premium India Travel Guides",
     description:
-      "Premium India travel guides, itineraries, and travel tips.",
+      "Premium India travel guides, itineraries, budget tips, and destination inspiration.",
+    images: ["/og-image.jpg"],
+  },
+
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 

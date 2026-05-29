@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navItems = [
   { label: "Destinations", href: "/destinations" },
@@ -18,12 +19,27 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link
+        {/* <Link
           href="/"
           className="text-xl font-black tracking-tight text-zinc-950"
           onClick={() => setOpen(false)}
         >
           India<span className="text-orange-500">Trip</span>Guide
+        </Link> */}
+
+        <Link
+          href="/"
+          className="flex h-16 items-center"
+          onClick={() => setOpen(false)}
+        >
+          <Image
+            src="/logo.svg"
+            alt="IndiaTripGuide"
+            width={260}
+            height={52}
+            priority
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">

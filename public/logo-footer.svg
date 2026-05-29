@@ -1,0 +1,30 @@
+<svg width="600" height="120" viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .india {
+      fill: #FFFFFF;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 72px;
+      font-weight: 700;
+    }
+
+    .trip {
+      fill: #f97316;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 72px;
+      font-weight: 700;
+    }
+
+    .guide {
+      fill: #FFFFFF;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 72px;
+      font-weight: 700;
+    }
+  </style>
+
+  <text x="10" y="85">
+    <tspan class="india">India</tspan>
+    <tspan class="trip">Trip</tspan>
+    <tspan class="guide">Guide</tspan>
+  </text>
+</svg>
