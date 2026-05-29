@@ -39,7 +39,7 @@ export const metadata = {
     siteName: "IndiaTripGuide",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "IndiaTripGuide - Premium India Travel Guides",
