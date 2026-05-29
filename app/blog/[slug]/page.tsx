@@ -84,7 +84,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
           />
         </div>
 
-        <AdPlaceholder />
+        {/* <AdPlaceholder /> */}
 
         <article className="prose prose-zinc mt-10 max-w-none">
           {blog.content.map((paragraph) => (
@@ -168,7 +168,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        <AdPlaceholder />
+        {/* <AdPlaceholder /> */}
       </section>
     </main>
   );

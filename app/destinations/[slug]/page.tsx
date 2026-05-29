@@ -118,7 +118,7 @@ const jsonLd = {
             </div>
           </div>
 
-          <AdPlaceholder />
+          {/* <AdPlaceholder /> */}
 
           <section className="mt-12">
             <h2 className="text-3xl font-bold text-zinc-950">
@@ -207,21 +207,21 @@ const jsonLd = {
 
           <div className="mt-6 space-y-3">
             <Link
-              href="#"
+              href="/contact"
               className="block rounded-full bg-zinc-950 px-5 py-3 text-center text-sm font-semibold text-white"
             >
               Book Hotels
             </Link>
 
             <Link
-              href="#"
+              href="/contact"
               className="block rounded-full border border-zinc-300 bg-white px-5 py-3 text-center text-sm font-semibold text-zinc-900"
             >
               Find Flights
             </Link>
 
             <Link
-              href="#"
+              href="/contact"
               className="block rounded-full border border-zinc-300 bg-white px-5 py-3 text-center text-sm font-semibold text-zinc-900"
             >
               Explore Packages

@@ -10,6 +10,7 @@ import AdPlaceholder from "@/components/ads/AdPlaceholder";
 import { destinations } from "@/data/destinations";
 import { itineraries } from "@/data/itineraries";
 import { blogs } from "@/data/blogs";
+import DestinationSearch from "@/components/shared/DestinationSearch";
 
 import Image from "next/image";
 
@@ -33,7 +34,7 @@ export default function HomePage() {
               travel stories.
             </p>
 
-            <div className="mt-8 rounded-[2rem] border border-zinc-200 bg-white p-3 shadow-xl">
+            {/* <div className="mt-8 rounded-[2rem] border border-zinc-200 bg-white p-3 shadow-xl">
               <div className="flex flex-col gap-3 md:flex-row">
                 <input
                   type="text"
@@ -45,7 +46,9 @@ export default function HomePage() {
                   Search
                 </button>
               </div>
-            </div>
+            </div> */}
+
+            <DestinationSearch />
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link
@@ -101,6 +104,24 @@ export default function HomePage() {
 
         <div className="grid gap-5 md:grid-cols-4">
           {[
+            { label: "Weekend Trips", href: "/destinations?search=weekend" },
+            { label: "Beach Escapes", href: "/destinations?search=beach" },
+            { label: "Hill Stations", href: "/destinations?search=hill" },
+            { label: "Heritage Cities", href: "/destinations?search=heritage" },
+            { label: "Honeymoon", href: "/destinations?search=romantic" },
+            { label: "Budget Travel", href: "/destinations?search=budget" },
+            { label: "Family Trips", href: "/destinations?search=family" },
+            { label: "Adventure", href: "/destinations?search=adventure" },
+          ].map((category) => (
+            <Link
+              key={category.label}
+              href={category.href}
+              className="rounded-3xl border border-zinc-200 bg-white p-6 text-center font-bold text-zinc-900 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              {category.label}
+            </Link>
+          ))}
+          {/* {[
             "Weekend Trips",
             "Beach Escapes",
             "Hill Stations",
@@ -116,7 +137,7 @@ export default function HomePage() {
             >
               {category}
             </div>
-          ))}
+          ))} */}
         </div>
       </section>
 
@@ -203,11 +224,11 @@ export default function HomePage() {
             ))}
           </div>
 
-          <AdPlaceholder />
+          {/* <AdPlaceholder /> */}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      {/* <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="rounded-[2rem] bg-gradient-to-br from-zinc-950 to-zinc-800 px-6 py-14 text-center text-white md:px-16">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-300">
             Travel smarter
@@ -232,6 +253,32 @@ export default function HomePage() {
             <button className="h-12 rounded-xl bg-orange-500 px-6 font-semibold text-white hover:bg-orange-600">
               Subscribe
             </button>
+          </div>
+        </div>
+      </section> */}
+
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="rounded-[2rem] bg-gradient-to-br from-zinc-950 to-zinc-800 px-6 py-14 text-center text-white md:px-16">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-300">
+            Travel smarter
+          </p>
+
+          <h2 className="mt-4 text-3xl font-black md:text-5xl">
+            Get fresh India travel guides
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-300">
+            Discover new destinations, itineraries, budget tips, and travel ideas
+            directly from IndiaTripGuide.
+          </p>
+
+          <div className="mt-8">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 font-semibold text-white transition hover:bg-orange-600"
+            >
+              Get Travel Updates
+            </Link>
           </div>
         </div>
       </section>

@@ -42,8 +42,16 @@ export default function Footer() {
               Disclaimer
             </Link>
           </div>
+        </div>        
+      </div>
+
+      {/* Copyright */}
+      <div className="border-t border-zinc-800">
+        <div className="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-zinc-500">
+          © {new Date().getFullYear()} IndiaTripGuide. All rights reserved.
         </div>
       </div>
+
     </footer>
   );
 }

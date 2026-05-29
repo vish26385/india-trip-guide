@@ -21,7 +21,7 @@ export default function BlogPage() {
           ))}
         </div>
 
-        <AdPlaceholder />
+        {/* <AdPlaceholder /> */}
       </section>
     </main>
   );

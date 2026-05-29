@@ -21,7 +21,7 @@ export default function ItinerariesPage() {
           ))}
         </div>
 
-        <AdPlaceholder />
+        {/* <AdPlaceholder /> */}
       </section>
     </main>
   );
