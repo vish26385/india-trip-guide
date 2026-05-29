@@ -97,7 +97,6 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
-          as="h1"
           eyebrow="Explore by style"
           title="Find trips by your travel mood"
           description="Choose the kind of trip you want and discover destinations that match your travel style."
@@ -144,7 +143,6 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
-          as="h1"
           eyebrow="Top destinations"
           title="Popular places to visit in India"
           description="Start with handpicked destinations that are perfect for first-time travelers, couples, families, and weekend trips."
@@ -160,7 +158,6 @@ export default function HomePage() {
       <section className="bg-zinc-50">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <SectionHeading
-            as="h1"
             eyebrow="Trip plans"
             title="Ready-made itineraries"
             description="Save planning time with practical day-by-day travel plans for India’s most loved destinations."
@@ -176,7 +173,6 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
-          as="h1"
           eyebrow="Why IndiaTripGuide"
           title="Simple, useful and travel-focused"
           description="Built to help Indian travelers plan faster with clear guides, estimated budgets, best time to visit, and practical tips."
@@ -217,7 +213,6 @@ export default function HomePage() {
       <section className="bg-zinc-950 text-white">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <SectionHeading
-            as="h1"
             eyebrow="Travel stories"
             title="Latest travel guides"
             description="Read practical travel blogs, budget guides, seasonal advice, and planning tips for Indian destinations."
