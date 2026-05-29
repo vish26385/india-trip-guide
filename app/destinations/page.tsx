@@ -24,6 +24,7 @@ export default async function DestinationsPage({ searchParams }: PageProps) {
     <main className="bg-white">
       <section className="bg-gradient-to-br from-orange-50 via-white to-sky-50 px-6 py-20">
         <SectionHeading
+          as="h1"
           eyebrow="Destinations"
           title="Explore India’s best travel destinations"
           description="Find beautiful cities, beaches, hill stations, heritage places, and peaceful escapes across India."

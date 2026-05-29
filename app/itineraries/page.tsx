@@ -8,6 +8,7 @@ export default function ItinerariesPage() {
     <main className="bg-white">
       <section className="bg-gradient-to-br from-sky-50 via-white to-orange-50 px-6 py-20">
         <SectionHeading
+          as="h1"
           eyebrow="Itineraries"
           title="Ready-made India travel plans"
           description="Discover practical itineraries with day-by-day travel plans, budget estimates, and travel tips."

@@ -8,6 +8,7 @@ export default function BlogPage() {
     <main className="bg-white">
       <section className="bg-gradient-to-br from-orange-50 via-white to-zinc-50 px-6 py-20">
         <SectionHeading
+          as="h1"
           eyebrow="Travel Blog"
           title="Latest travel guides and tips"
           description="Read destination guides, travel planning advice, budget tips, and seasonal travel recommendations."
