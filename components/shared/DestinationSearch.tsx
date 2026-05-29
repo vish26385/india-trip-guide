@@ -51,13 +51,15 @@ export default function DestinationSearch() {
             if (e.key === "Enter") handleSearch();
           }}
           placeholder="Search destinations..."
-          className="h-14 flex-1 rounded-2xl border border-zinc-200 px-5 outline-none focus:border-orange-400"
+          //className="h-14 flex-1 rounded-2xl border border-zinc-200 px-5 outline-none focus:border-orange-400"
+          className="min-h-14 flex-1 rounded-2xl border border-zinc-200 px-5 py-4 text-base outline-none focus:border-orange-400"
         />
 
         <button
           type="button"
           onClick={handleSearch}
-          className="h-14 rounded-2xl bg-orange-500 px-8 font-semibold text-white transition hover:bg-orange-600"
+          //className="h-14 rounded-2xl bg-orange-500 px-8 font-semibold text-white transition hover:bg-orange-600"
+          className="min-h-14 rounded-2xl bg-orange-500 px-8 py-4 text-base font-semibold text-white transition hover:bg-orange-600"
         >
           Search
         </button>

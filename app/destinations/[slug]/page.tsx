@@ -81,16 +81,19 @@ const jsonLd = {
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-        <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-7xl px-6 pb-12 text-white">
+        {/* <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-7xl px-6 pb-12 text-white"> */}
+        <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-7xl px-6 pb-8 text-white md:pb-12">
           <p className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-orange-300">
             <MapPin size={18} /> {destination.tagline}
           </p>
 
-          <h1 className="max-w-4xl text-5xl font-black tracking-tight md:text-7xl">
+          {/* <h1 className="max-w-4xl text-5xl font-black tracking-tight md:text-7xl"> */}
+          <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight sm:text-5xl md:text-7xl">
             {destination.name}
           </h1>
 
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-100">
+          {/* <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-100"> */}
+          <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-100 md:mt-5 md:text-lg md:leading-8">
             {destination.description}
           </p>
         </div>
