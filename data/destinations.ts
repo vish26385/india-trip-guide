@@ -41,8 +41,8 @@ export const destinations: Destination[] = [
           "3 to 4 days are ideal for exploring major attractions comfortably.",
       },
     ],
+    tags: ["weekend", "family", "heritage"],
   },
-
   {
     slug: "goa",
     name: "Goa",
@@ -78,8 +78,8 @@ export const destinations: Destination[] = [
           "North Goa is famous for nightlife while South Goa is calmer and more relaxing.",
       },
     ],
+    tags: ["beach", "honeymoon", "budget"],
   },
-
   {
     slug: "jaipur",
     name: "Jaipur",
@@ -115,6 +115,7 @@ export const destinations: Destination[] = [
           "Yes, Jaipur is excellent for families, couples, and cultural travelers.",
       },
     ],
+    tags: ["heritage", "family", "weekend"],
   },
   {
     slug: "manali",
@@ -135,6 +136,7 @@ export const destinations: Destination[] = [
         answer: "Yes, Manali is one of the most popular couple-friendly mountain destinations in India.",
       },
     ],
+    tags: ["hill", "adventure", "honeymoon"],
   },
   {
     slug: "rishikesh",
@@ -156,6 +158,7 @@ export const destinations: Destination[] = [
         answer: "2 to 3 days are enough for major attractions and adventure activities.",
       },
     ],
+    tags: ["adventure", "weekend"],
   },
   {
     slug: "kerala",
@@ -177,6 +180,7 @@ export const destinations: Destination[] = [
         answer: "Kochi, Munnar, Thekkady, and Alleppey is a popular first-time Kerala route.",
       },
     ],
+    tags: ["family", "honeymoon", "nature"],
   },
   {
     slug: "jaisalmer",
@@ -192,6 +196,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Camel safari", "Desert camping", "Fort visit", "Sunset photography"],
     travelTips: ["Book desert camps early", "Carry warm clothes for nights", "Avoid peak summer"],
     faqs: [{ question: "How many days are enough for Jaisalmer?", answer: "3 to 4 days are ideal for Jaisalmer and desert experiences." }],
+    tags: ["heritage", "weekend", "adventure"],
   },
   {
     slug: "shimla",
@@ -207,6 +212,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Walk on Mall Road", "Visit Kufri", "Enjoy snowfall season", "Try local cafes"],
     travelTips: ["Book hotels early in peak season", "Carry warm clothes", "Check snow conditions in winter"],
     faqs: [{ question: "Is Shimla good for family trips?", answer: "Yes, Shimla is excellent for families, couples, and first-time hill station travelers." }],
+    tags: ["hill", "family", "honeymoon"],
   },
   {
     slug: "darjeeling",
@@ -221,6 +227,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Watch sunrise at Tiger Hill", "Visit tea estates", "Ride toy train", "Explore local markets"],
     travelTips: ["Start early for Tiger Hill", "Carry light woolens", "Book toy train tickets early"],
     faqs: [{ question: "What is Darjeeling famous for?", answer: "Darjeeling is famous for tea gardens, Kanchenjunga views, and the toy train." }],
+    tags: ["hill", "family", "nature"],
   },
   {
     slug: "andaman",
@@ -235,6 +242,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Scuba diving", "Snorkeling", "Beach hopping", "Island ferry rides"],
     travelTips: ["Book ferries in advance", "Keep buffer time for weather", "Carry beach essentials"],
     faqs: [{ question: "How many days are enough for Andaman?", answer: "5 to 6 days are ideal for Port Blair, Havelock, and Neil Island." }],
+    tags: ["beach", "honeymoon", "adventure"],
   },
   {
     slug: "mumbai",
@@ -249,6 +257,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Walk at Marine Drive", "Try street food", "Visit Gateway of India", "Explore Colaba"],
     travelTips: ["Use local trains carefully", "Avoid monsoon flooding areas", "Keep travel time buffer"],
     faqs: [{ question: "Is Mumbai good for a short trip?", answer: "Yes, Mumbai is perfect for a 2 to 3 day city break." }],
+    tags: ["weekend", "family", "city"],
   },
   {
     slug: "pondicherry",
@@ -264,6 +273,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Cafe hopping", "Beach walk", "Visit Auroville", "Explore French streets"],
     travelTips: ["Rent a scooter", "Stay near White Town", "Visit cafes early"],
     faqs: [{ question: "How many days are enough for Pondicherry?", answer: "2 to 3 days are enough for Pondicherry." }],
+    tags: ["beach", "honeymoon", "weekend"],
   },
   {
     slug: "mount-abu",
@@ -279,6 +289,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Boating", "Temple visit", "Sunset viewpoint", "Local market walk"],
     travelTips: ["Good for weekend trips", "Carry light woolens in winter", "Start sightseeing early"],
     faqs: [{ question: "Is Mount Abu good for weekend trip?", answer: "Yes, Mount Abu is perfect for a 2-day weekend trip." }],
+    tags: ["hill", "weekend", "family"],
   },
   {
     slug: "munnar",
@@ -294,6 +305,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Tea estate visit", "Nature photography", "Waterfall visit", "Hill viewpoint drive"],
     travelTips: ["Keep warm clothes", "Book hill-view stay", "Avoid tight travel schedule"],
     faqs: [{ question: "Is Munnar good for honeymoon?", answer: "Yes, Munnar is one of the best romantic hill destinations in South India." }],
+    tags: ["hill", "honeymoon", "nature"],
   },
   {
     slug: "gujarat-spiritual-coastal-journey",
@@ -309,6 +321,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Temple darshan", "Gir safari", "Girnar climb", "Diu beach relaxation"],
     travelTips: ["Book Gir safari early", "Plan road travel carefully", "Keep one buffer day"],
     faqs: [{ question: "How many days are enough for this Gujarat trip?", answer: "6 to 7 days are ideal for Somnath, Dwarka, Gir, Girnar, and Diu." }],
+    tags: ["heritage", "family", "beach"],
   },
   {
   slug: "jodhpur",
@@ -343,8 +356,8 @@ export const destinations: Destination[] = [
       answer: "2 to 3 days are ideal for exploring Jodhpur.",
     },
   ],
+  tags: ["heritage", "weekend", "family"],
 },
-
 {
   slug: "kashmir",
   name: "Kashmir",
@@ -378,8 +391,8 @@ export const destinations: Destination[] = [
       answer: "March to October is best for sightseeing and pleasant weather.",
     },
   ],
+  tags: ["hill", "honeymoon", "adventure"],
 },
-
 {
   slug: "mussoorie",
   name: "Mussoorie",
@@ -413,8 +426,8 @@ export const destinations: Destination[] = [
       answer: "Yes, Mussoorie is excellent for family vacations.",
     },
   ],
+  tags: ["hill", "family", "weekend"],
 },
-
 {
   slug: "varanasi",
   name: "Varanasi",
@@ -448,8 +461,8 @@ export const destinations: Destination[] = [
       answer: "2 to 3 days are enough for major spiritual attractions.",
     },
   ],
+  tags: ["heritage", "family", "spiritual"],
 },
-
 {
   slug: "agra",
   name: "Agra",
@@ -483,5 +496,6 @@ export const destinations: Destination[] = [
       answer: "Yes, most travelers can cover major attractions in one full day.",
     },
   ],
+  tags: ["heritage", "family", "weekend"],
 },
 ];

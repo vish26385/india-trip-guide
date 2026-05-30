@@ -12,13 +12,27 @@ export default async function DestinationsPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const search = params?.search?.toLowerCase() ?? "";
 
-  const filteredDestinations = search
-    ? destinations.filter((destination) =>
-        `${destination.name} ${destination.tagline} ${destination.description}`
-          .toLowerCase()
-          .includes(search)
-      )
-    : destinations;
+  // const filteredDestinations = search
+  //   ? destinations.filter((destination) =>
+  //       `${destination.name} ${destination.tagline} ${destination.description}`
+  //         .toLowerCase()
+  //         .includes(search)
+  //     )
+  //   : destinations;
+
+  const searchTerm = search.toLowerCase();
+
+const filteredDestinations = destinations.filter((destination) => {
+  const matchesName =
+    destination.name.toLowerCase().includes(searchTerm);
+
+  const matchesTags =
+    destination.tags?.some((tag) =>
+      tag.toLowerCase().includes(searchTerm)
+    );
+
+  return matchesName || matchesTags;
+});
 
   return (
     <main className="bg-white">

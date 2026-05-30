@@ -108,7 +108,7 @@ export default function HomePage() {
             { label: "Beach Escapes", href: "/destinations?search=beach" },
             { label: "Hill Stations", href: "/destinations?search=hill" },
             { label: "Heritage Cities", href: "/destinations?search=heritage" },
-            { label: "Honeymoon", href: "/destinations?search=romantic" },
+            { label: "Honeymoon", href: "/destinations?search=honeymoon" },
             { label: "Budget Travel", href: "/destinations?search=budget" },
             { label: "Family Trips", href: "/destinations?search=family" },
             { label: "Adventure", href: "/destinations?search=adventure" },
@@ -120,24 +120,7 @@ export default function HomePage() {
             >
               {category.label}
             </Link>
-          ))}
-          {/* {[
-            "Weekend Trips",
-            "Beach Escapes",
-            "Hill Stations",
-            "Heritage Cities",
-            "Honeymoon",
-            "Budget Travel",
-            "Family Trips",
-            "Adventure",
-          ].map((category) => (
-            <div
-              key={category}
-              className="rounded-3xl border border-zinc-200 bg-white p-6 text-center font-bold text-zinc-900 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-            >
-              {category}
-            </div>
-          ))} */}
+          ))}          
         </div>
       </section>
 

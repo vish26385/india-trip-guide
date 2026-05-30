@@ -14,6 +14,7 @@ export type Destination = {
     question: string;
     answer: string;
   }[];
+  tags: string[];
 };
 
 export type Itinerary = {
