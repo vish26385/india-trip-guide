@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import { Clock } from "lucide-react";
 import Image from "next/image";
-
+import Link from "next/link";
+import { destinations } from "@/data/destinations";
 import AdPlaceholder from "@/components/ads/AdPlaceholder";
 import { blogs } from "@/data/blogs";
 
@@ -51,6 +52,34 @@ export default async function BlogDetailPage({ params }: PageProps) {
     name: "IndiaTripGuide",
   },
 };
+
+const blogDestinationMap: Record<string, string> = {
+  "best-time-to-visit-udaipur": "udaipur",
+  "budget-goa-trip-guide": "goa",
+  "best-time-to-visit-jaipur": "jaipur",
+  "best-time-to-visit-manali": "manali",
+  "best-time-to-visit-rishikesh": "rishikesh",
+  "best-time-to-visit-kerala": "kerala",
+  "best-time-to-visit-jaisalmer": "jaisalmer",
+  "complete-shimla-travel-guide": "shimla",
+  "top-hill-stations-in-india": "darjeeling",
+  "best-time-to-visit-andaman": "andaman",
+  "best-time-to-visit-mumbai": "mumbai",
+  "best-time-to-visit-pondicherry": "pondicherry",
+  "best-time-to-visit-munnar": "munnar",
+  "gujarat-road-trip-travel-guide":
+    "gujarat-spiritual-coastal-journey",
+  "best-time-to-visit-kashmir": "kashmir",
+  "best-time-to-visit-mussoorie": "mussoorie",
+  "complete-varanasi-travel-guide": "varanasi",
+  "complete-agra-travel-guide": "agra",
+  "rajasthan-road-trip-guide": "jodhpur",
+};
+
+const relatedDestination = destinations.find(
+  (destination) =>
+    destination.slug === blogDestinationMap[blog.slug]
+);
 
   return (
     <main className="bg-white">
@@ -139,6 +168,31 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {relatedDestination && (
+          <section className="mt-16">
+            <h2 className="text-3xl font-bold text-zinc-950">
+              Explore Destination
+            </h2>
+
+            <Link
+              href={`/destinations/${relatedDestination.slug}`}
+              className="mt-6 block rounded-3xl border border-zinc-200 bg-zinc-50 p-6 transition hover:border-orange-300 hover:bg-orange-50"
+            >
+              <h3 className="text-xl font-bold text-zinc-950">
+                {relatedDestination.name}
+              </h3>
+
+              <p className="mt-2 text-zinc-600">
+                {relatedDestination.description}
+              </p>
+
+              <span className="mt-4 inline-block font-semibold text-orange-600">
+                View Destination →
+              </span>
+            </Link>
+          </section>
+        )}
 
         <section className="mt-16">
           <div className="rounded-[2rem] bg-zinc-950 p-8 text-white">

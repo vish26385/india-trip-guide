@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { CalendarDays, MapPin, Wallet } from "lucide-react";
-
+import Link from "next/link";
+import { destinations } from "@/data/destinations";
+import { blogs } from "@/data/blogs";
 import AdPlaceholder from "@/components/ads/AdPlaceholder";
 import { itineraries } from "@/data/itineraries";
 
@@ -47,6 +49,64 @@ const jsonLd = {
   itineraryLength: itinerary.duration,
   url: `https://www.indiatripguide.com/itineraries/${itinerary.slug}`,
 };  
+
+const itineraryDestinationMap: Record<string, string> = {
+  "3-days-in-udaipur": "udaipur",
+  "5-days-in-goa": "goa",
+  "4-days-in-jaisalmer": "jaisalmer",
+  "5-days-in-shimla-kufri": "shimla",
+  "4-days-in-darjeeling": "darjeeling",
+  "6-days-in-andaman": "andaman",
+  "7-days-divine-coastal-gujarat-trail": "gujarat-spiritual-coastal-journey",
+  "4-days-in-jaipur": "jaipur",
+  "3-days-in-jodhpur": "jodhpur",
+  "2-days-in-mount-abu": "mount-abu",
+  "4-days-in-manali": "manali",
+  "3-days-in-rishikesh": "rishikesh",
+  "5-days-in-kerala": "kerala",
+  "4-days-in-munnar": "munnar",
+  "6-days-in-kashmir": "kashmir",
+  "3-days-in-varanasi": "varanasi",
+  "3-days-in-agra": "agra",
+  "4-days-in-amritsar": "amritsar",
+  "5-days-in-coorg-ooty": "coorg",
+  "7-days-rajasthan-road-trip": "jodhpur",
+  "3-days-in-mumbai": "mumbai",
+  "3-days-in-pondicherry": "pondicherry",
+  "3-days-in-mussoorie": "mussoorie",
+};
+
+const itineraryBlogMap: Record<string, string> = {
+  "3-days-in-udaipur": "best-time-to-visit-udaipur",
+  "5-days-in-goa": "budget-goa-trip-guide",
+  "4-days-in-jaisalmer": "best-time-to-visit-jaisalmer",
+  "5-days-in-shimla-kufri": "complete-shimla-travel-guide",
+  "4-days-in-darjeeling": "top-hill-stations-in-india",
+  "6-days-in-andaman": "best-time-to-visit-andaman",
+  "7-days-divine-coastal-gujarat-trail": "gujarat-road-trip-travel-guide",
+  "4-days-in-jaipur": "best-time-to-visit-jaipur",
+  "3-days-in-jodhpur": "rajasthan-road-trip-guide",
+  "2-days-in-mount-abu": "top-hill-stations-in-india",
+  "4-days-in-manali": "best-time-to-visit-manali",
+  "3-days-in-rishikesh": "best-time-to-visit-rishikesh",
+  "5-days-in-kerala": "best-time-to-visit-kerala",
+  "4-days-in-munnar": "best-time-to-visit-munnar",
+  "6-days-in-kashmir": "best-time-to-visit-kashmir",
+  "3-days-in-varanasi": "complete-varanasi-travel-guide",
+  "3-days-in-agra": "complete-agra-travel-guide",
+  "3-days-in-mumbai": "best-time-to-visit-mumbai",
+  "3-days-in-pondicherry": "best-time-to-visit-pondicherry",
+  "3-days-in-mussoorie": "best-time-to-visit-mussoorie",
+};
+
+const relatedDestination = destinations.find(
+  (destination) =>
+    destination.slug === itineraryDestinationMap[itinerary.slug]
+);
+
+const relatedBlog = blogs.find(
+  (blog) => blog.slug === itineraryBlogMap[itinerary.slug]
+);
 
   return (
     <main className="bg-white">
@@ -204,6 +264,56 @@ const jsonLd = {
             </div>
           </div>
         </section>
+
+        {relatedDestination && (
+          <section className="mt-16">
+            <h2 className="text-3xl font-bold text-zinc-950">
+              Explore Destination
+            </h2>
+
+            <Link
+              href={`/destinations/${relatedDestination.slug}`}
+              className="mt-6 block rounded-3xl border border-zinc-200 bg-zinc-50 p-6 transition hover:border-orange-300 hover:bg-orange-50"
+            >
+              <h3 className="text-xl font-bold text-zinc-950">
+                {relatedDestination.name}
+              </h3>
+
+              <p className="mt-2 text-zinc-600">
+                {relatedDestination.description}
+              </p>
+
+              <span className="mt-4 inline-block font-semibold text-orange-600">
+                View Destination →
+              </span>
+            </Link>
+          </section>
+        )}
+
+        {relatedBlog && (
+          <section className="mt-16">
+            <h2 className="text-3xl font-bold text-zinc-950">
+              Related Guide
+            </h2>
+
+            <Link
+              href={`/blog/${relatedBlog.slug}`}
+              className="mt-6 block rounded-3xl border border-zinc-200 bg-zinc-50 p-6 transition hover:border-orange-300 hover:bg-orange-50"
+            >
+              <h3 className="text-xl font-bold text-zinc-950">
+                {relatedBlog.title}
+              </h3>
+
+              <p className="mt-2 text-zinc-600">
+                {relatedBlog.description}
+              </p>
+
+              <span className="mt-4 inline-block font-semibold text-orange-600">
+                Read Guide →
+              </span>
+            </Link>
+          </section>
+        )}
 
         <section className="mt-16">
           <div className="rounded-[2rem] bg-zinc-950 p-8 text-white">

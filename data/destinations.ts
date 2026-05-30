@@ -309,5 +309,179 @@ export const destinations: Destination[] = [
     thingsToDo: ["Temple darshan", "Gir safari", "Girnar climb", "Diu beach relaxation"],
     travelTips: ["Book Gir safari early", "Plan road travel carefully", "Keep one buffer day"],
     faqs: [{ question: "How many days are enough for this Gujarat trip?", answer: "6 to 7 days are ideal for Somnath, Dwarka, Gir, Girnar, and Diu." }],
-  }
+  },
+  {
+  slug: "jodhpur",
+  name: "Jodhpur",
+  tagline: "The Blue City",
+  description:
+    "Jodhpur is famous for Mehrangarh Fort, blue-painted old town streets, royal palaces, and vibrant Rajasthani culture.",
+  image: "/images/jodhpur-new.jpg",
+  bestTime: "October to March",
+  budget: "₹10,000 - ₹24,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Mehrangarh Fort",
+    "Jaswant Thada",
+    "Clock Tower Market",
+    "Umaid Bhawan Palace",
+  ],
+  thingsToDo: [
+    "Explore Mehrangarh Fort",
+    "Visit blue city lanes",
+    "Shop at local markets",
+    "Enjoy rooftop cafes",
+  ],
+  travelTips: [
+    "Visit fort early morning",
+    "Carry sunscreen",
+    "Stay near old city",
+  ],
+  faqs: [
+    {
+      question: "How many days are enough for Jodhpur?",
+      answer: "2 to 3 days are ideal for exploring Jodhpur.",
+    },
+  ],
+},
+
+{
+  slug: "kashmir",
+  name: "Kashmir",
+  tagline: "Paradise on Earth",
+  description:
+    "Kashmir is known for stunning valleys, snow-capped mountains, houseboats, gardens, and breathtaking scenery.",
+  image: "/images/kashmir.jpg",
+  bestTime: "March to October",
+  budget: "₹20,000 - ₹50,000",
+  duration: "5-7 Days",
+  highlights: [
+    "Srinagar",
+    "Gulmarg",
+    "Pahalgam",
+    "Sonmarg",
+  ],
+  thingsToDo: [
+    "Stay in a houseboat",
+    "Ride Gulmarg Gondola",
+    "Explore valleys",
+    "Enjoy local cuisine",
+  ],
+  travelTips: [
+    "Carry warm clothes",
+    "Book flights early",
+    "Check weather forecasts",
+  ],
+  faqs: [
+    {
+      question: "What is the best time to visit Kashmir?",
+      answer: "March to October is best for sightseeing and pleasant weather.",
+    },
+  ],
+},
+
+{
+  slug: "mussoorie",
+  name: "Mussoorie",
+  tagline: "Queen of the Hills",
+  description:
+    "Mussoorie is a charming hill station offering mountain views, waterfalls, pleasant weather, and colonial charm.",
+  image: "/images/mussoorie.jpg",
+  bestTime: "March to June, September to November",
+  budget: "₹8,000 - ₹22,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Kempty Falls",
+    "Mall Road",
+    "Gun Hill",
+    "Lal Tibba",
+  ],
+  thingsToDo: [
+    "Visit waterfalls",
+    "Walk on Mall Road",
+    "Cable car ride",
+    "View Himalayan peaks",
+  ],
+  travelTips: [
+    "Avoid long weekends",
+    "Carry light jackets",
+    "Start sightseeing early",
+  ],
+  faqs: [
+    {
+      question: "Is Mussoorie good for families?",
+      answer: "Yes, Mussoorie is excellent for family vacations.",
+    },
+  ],
+},
+
+{
+  slug: "varanasi",
+  name: "Varanasi",
+  tagline: "Spiritual Capital of India",
+  description:
+    "Varanasi is one of the world's oldest cities, famous for ghats, temples, Ganga Aarti, and spiritual experiences.",
+  image: "/images/varanasi.jpg",
+  bestTime: "October to March",
+  budget: "₹8,000 - ₹20,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Dashashwamedh Ghat",
+    "Kashi Vishwanath Temple",
+    "Assi Ghat",
+    "Ganga Aarti",
+  ],
+  thingsToDo: [
+    "Boat ride on Ganga",
+    "Attend evening Aarti",
+    "Temple visits",
+    "Explore old city",
+  ],
+  travelTips: [
+    "Wake up early for ghat views",
+    "Respect religious customs",
+    "Keep cash handy",
+  ],
+  faqs: [
+    {
+      question: "How many days are enough for Varanasi?",
+      answer: "2 to 3 days are enough for major spiritual attractions.",
+    },
+  ],
+},
+
+{
+  slug: "agra",
+  name: "Agra",
+  tagline: "Home of the Taj Mahal",
+  description:
+    "Agra is famous worldwide for the Taj Mahal, Mughal architecture, historic forts, and rich heritage.",
+  image: "/images/agra.jpg",
+  bestTime: "October to March",
+  budget: "₹7,000 - ₹18,000",
+  duration: "1-2 Days",
+  highlights: [
+    "Taj Mahal",
+    "Agra Fort",
+    "Mehtab Bagh",
+    "Fatehpur Sikri",
+  ],
+  thingsToDo: [
+    "Visit Taj Mahal at sunrise",
+    "Explore Agra Fort",
+    "Try Mughlai food",
+    "Visit Fatehpur Sikri",
+  ],
+  travelTips: [
+    "Visit early morning",
+    "Book tickets online",
+    "Avoid peak afternoon heat",
+  ],
+  faqs: [
+    {
+      question: "Is one day enough for Agra?",
+      answer: "Yes, most travelers can cover major attractions in one full day.",
+    },
+  ],
+},
 ];

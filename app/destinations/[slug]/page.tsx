@@ -7,6 +7,7 @@ import AdPlaceholder from "@/components/ads/AdPlaceholder";
 import ItineraryCard from "@/components/cards/ItineraryCard";
 import { destinations } from "@/data/destinations";
 import { itineraries } from "@/data/itineraries";
+import { blogs } from "@/data/blogs";
 
 type PageProps = {
   params: Promise<{
@@ -54,11 +55,39 @@ const jsonLd = {
   url: `https://www.indiatripguide.com/destinations/${destination.slug}`,
 };
 
+const destinationBlogMap: Record<string, string> = {
+  udaipur: "best-time-to-visit-udaipur",
+  goa: "budget-goa-trip-guide",
+  jaipur: "best-time-to-visit-jaipur",
+  manali: "best-time-to-visit-manali",
+  rishikesh: "best-time-to-visit-rishikesh",
+  kerala: "best-time-to-visit-kerala",
+  jaisalmer: "best-time-to-visit-jaisalmer",
+  shimla: "complete-shimla-travel-guide",
+  darjeeling: "top-hill-stations-in-india",
+  "mount-abu": "top-hill-stations-in-india",
+  andaman: "best-time-to-visit-andaman",
+  mumbai: "best-time-to-visit-mumbai",
+  pondicherry: "best-time-to-visit-pondicherry",
+  munnar: "best-time-to-visit-munnar",
+  "gujarat-spiritual-coastal-journey":
+    "gujarat-road-trip-travel-guide",
+  kashmir: "best-time-to-visit-kashmir",
+  mussoorie: "best-time-to-visit-mussoorie",
+  jodhpur: "rajasthan-road-trip-guide",
+  varanasi: "complete-varanasi-travel-guide",
+  agra: "complete-agra-travel-guide",
+};
+
   const relatedItineraries = itineraries.filter(
     (item) =>
       item.destination.toLowerCase() === destination.name.toLowerCase() ||
       item.title.toLowerCase().includes(destination.name.toLowerCase())
   );
+
+const relatedBlog = blogs.find(
+  (blog) => blog.slug === destinationBlogMap[destination.slug]
+);
 
   return (
     <main className="bg-white">
@@ -181,6 +210,31 @@ const jsonLd = {
                   <ItineraryCard key={itinerary.slug} itinerary={itinerary} />
                 ))}
               </div>
+            </section>
+          )}
+
+          {relatedBlog && (
+            <section className="mt-12">
+              <h2 className="text-3xl font-bold text-zinc-950">
+                Related Guides
+              </h2>
+
+              <Link
+                href={`/blog/${relatedBlog.slug}`}
+                className="mt-6 block rounded-3xl border border-zinc-200 bg-zinc-50 p-6 transition hover:border-orange-300 hover:bg-orange-50"
+              >
+                <h3 className="text-xl font-bold text-zinc-950">
+                  {relatedBlog.title}
+                </h3>
+
+                <p className="mt-2 text-zinc-600">
+                  {relatedBlog.description}
+                </p>
+
+                <span className="mt-4 inline-block font-semibold text-orange-600">
+                  Read Guide →
+                </span>
+              </Link>
             </section>
           )}
 
