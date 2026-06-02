@@ -308,6 +308,7 @@ import ItineraryCard from "@/components/cards/ItineraryCard";
 import { destinations } from "@/data/destinations";
 import { itineraries } from "@/data/itineraries";
 import { blogs } from "@/data/blogs";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 type PageProps = {
   params: Promise<{
@@ -460,6 +461,15 @@ export default async function DestinationDetailPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1fr_360px] lg:py-20">
+        <div className="lg:col-span-2">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Destinations", href: "/destinations" },
+              { label: destination.name },
+            ]}
+          />
+        </div>
         <div>
           <section>
             <div className="mb-6 flex items-center gap-3">

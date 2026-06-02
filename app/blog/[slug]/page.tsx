@@ -242,6 +242,7 @@ import {
 
 import { destinations } from "@/data/destinations";
 import { blogs } from "@/data/blogs";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 type PageProps = {
   params: Promise<{
@@ -357,6 +358,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-14 lg:py-20">
+         <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Blog", href: "/blog" },
+              { label: blog.title },
+            ]}
+          />
         <article className="rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-sm md:p-8">
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
             Travel Guide

@@ -366,6 +366,7 @@ import {
 import { destinations } from "@/data/destinations";
 import { blogs } from "@/data/blogs";
 import { itineraries } from "@/data/itineraries";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 type PageProps = {
   params: Promise<{
@@ -540,6 +541,13 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-14 lg:py-20">
+         <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Itineraries", href: "/itineraries" },
+              { label: itinerary.title },
+            ]}
+          />
         <section>
           <div className="mb-8">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
