@@ -1,7 +1,8 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import {
   DestinationSearchLogItem,
   getTopFailedDestinationSearches,
@@ -10,8 +11,7 @@ import {
 } from "@/lib/internalDestinationSearchLogsApi";
 
 export default function InternalDestinationSearchesPage() {
-  const searchParams = useSearchParams();
-  const key = searchParams.get("key") ?? "";
+  const [key, setKey] = useState("");
 
   const [items, setItems] = useState<DestinationSearchLogItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,6 +30,12 @@ export default function InternalDestinationSearchesPage() {
       setLoading(false);
     }
   }
+
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+
+  setKey(params.get("key") ?? "");
+}, []);
 
   useEffect(() => {
     if (!key) {

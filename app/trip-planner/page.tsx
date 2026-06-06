@@ -15,7 +15,6 @@ import {
   TripPlanResponse,
 } from "@/lib/tripPlannerApi";
 import { searchDestinationSuggestions } from "@/lib/exploreDestinationApi";
-import { useSearchParams } from "next/navigation";
 
 const popularDestinations = ["Munnar", "Goa", "Kashmir", "Manali", "Udaipur"];
 
@@ -54,14 +53,15 @@ export default function TripPlannerPage() {
   const [error, setError] = useState("");
   const [plan, setPlan] = useState<TripPlanResponse | null>(null);
   const [days, setDays] = useState("5");
-  const searchParams = useSearchParams();
 
 useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+
   const destinationFromUrl =
-    searchParams.get("destination");
+    params.get("destination");
 
   const daysFromUrl =
-    searchParams.get("days");
+    params.get("days");
 
   if (destinationFromUrl) {
     setDestination(destinationFromUrl);
@@ -70,7 +70,7 @@ useEffect(() => {
   if (daysFromUrl) {
     setDays(daysFromUrl);
   }
-}, [searchParams]);
+}, []);
 
   useEffect(() => {
     const value = destination.trim();
