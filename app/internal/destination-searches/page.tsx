@@ -8,6 +8,7 @@ import {
   getTopFailedDestinationSearches,
   ignoreDestinationSearchLog,
   markDestinationSearchLogAdded,
+  insertDestination,
 } from "@/lib/internalDestinationSearchLogsApi";
 
 export default function InternalDestinationSearchesPage() {
@@ -46,6 +47,11 @@ useEffect(() => {
 
     loadData();
   }, [key]);
+
+async function handleInsertDestination(id: number) {
+  await insertDestination(id, key);
+  await loadData();
+}
 
   async function handleIgnore(id: number) {
     await ignoreDestinationSearchLog(id, key);
@@ -129,7 +135,14 @@ useEffect(() => {
                       </td>
 
                       <td className="px-5 py-4">
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
+                          <button
+                            onClick={() => handleInsertDestination(item.id)}
+                            className="rounded-full bg-green-600 px-4 py-2 text-xs font-bold text-white hover:bg-green-700"
+                          >
+                            Insert Destination
+                          </button>
+
                           <button
                             onClick={() => handleMarkAdded(item.id)}
                             className="rounded-full bg-zinc-950 px-4 py-2 text-xs font-bold text-white hover:bg-orange-500"
