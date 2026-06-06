@@ -197,11 +197,11 @@ export default function Navbar() {
             })}
 
             <Link
-              href="/destinations"
+              href="/trip-planner"
               onClick={() => setOpen(false)}
               className="mt-4 flex items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-5 py-4 text-base font-bold text-white transition hover:bg-orange-500"
             >
-              Explore Destinations <ArrowRight size={18} />
+              Plan Trip <ArrowRight size={18} />
             </Link>
           </nav>
         </div>
