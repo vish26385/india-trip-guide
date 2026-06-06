@@ -90,7 +90,7 @@ export const destinations: Destination[] = [
       "https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=1400&auto=format&fit=crop",
     bestTime: "October to March",
     budget: "₹10,000 - ₹22,000",
-    duration: "3 Days",
+    duration: "4 Days",
     highlights: [
       "Amber Fort",
       "Hawa Mahal",
@@ -207,7 +207,7 @@ export const destinations: Destination[] = [
     image: "/images/shimla.jpg",
     bestTime: "March to June, December to February",
     budget: "₹10,000 - ₹25,000",
-    duration: "3-4 Days",
+    duration: "4-5 Days",
     highlights: ["Mall Road", "Kufri", "Jakhu Temple", "The Ridge"],
     thingsToDo: ["Walk on Mall Road", "Visit Kufri", "Enjoy snowfall season", "Try local cafes"],
     travelTips: ["Book hotels early in peak season", "Carry warm clothes", "Check snow conditions in winter"],
@@ -309,7 +309,8 @@ export const destinations: Destination[] = [
   },
   {
     slug: "gujarat-spiritual-coastal-journey",
-    name: "Gujarat Spiritual & Coastal Journey",
+    //name: "Gujarat Spiritual & Coastal Journey",
+    name: "Gujarat",
     tagline: "Divine & Coastal Gujarat Trail",
     description: "A powerful Gujarat route covering Somnath, Dwarka, Sasan Gir, Girnar, and Diu with temples, wildlife, mountains, and beaches.",
     //image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?q=80&w=1400&auto=format&fit=crop",    
@@ -472,7 +473,7 @@ export const destinations: Destination[] = [
   image: "/images/agra.jpg",
   bestTime: "October to March",
   budget: "₹7,000 - ₹18,000",
-  duration: "1-2 Days",
+  duration: "2-3 Days",
   highlights: [
     "Taj Mahal",
     "Agra Fort",

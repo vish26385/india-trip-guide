@@ -103,6 +103,7 @@ const navItems = [
   { label: "Destinations", href: "/destinations" },
   { label: "Itineraries", href: "/itineraries" },
   { label: "Blog", href: "/blog" },
+  { label: "Explore India", href: "/explore" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -155,10 +156,10 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link
-            href="/destinations"
+            href="/trip-planner"
             className="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-zinc-950/10 transition hover:-translate-y-0.5 hover:bg-orange-500 hover:shadow-orange-500/25"
           >
-            Explore <ArrowRight size={16} />
+            Plan Trip<ArrowRight size={16} />
           </Link>
         </div>
 

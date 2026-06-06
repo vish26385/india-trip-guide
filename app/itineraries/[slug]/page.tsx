@@ -767,10 +767,34 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
+              {/* <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
                 <Link
                   href="/contact"
                   className="rounded-full bg-orange-500 px-7 py-4 text-center font-black text-white transition hover:bg-orange-600"
+                >
+                  Book Hotels
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="rounded-full border border-white/15 bg-white/10 px-7 py-4 text-center font-black text-white transition hover:bg-white/15"
+                >
+                  Find Flights
+                </Link>
+              </div> */}
+              <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
+                <Link
+                  href={`/trip-planner?destination=${encodeURIComponent(
+                    itinerary.destination
+                  )}&days=${parseInt(itinerary.duration)}`}
+                  className="rounded-full bg-orange-500 px-7 py-4 text-center font-black text-white transition hover:bg-orange-600"
+                >
+                  Plan Trip
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="rounded-full border border-white/15 bg-white/10 px-7 py-4 text-center font-black text-white transition hover:bg-white/15"
                 >
                   Book Hotels
                 </Link>

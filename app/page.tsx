@@ -324,7 +324,7 @@ export default function HomePage() {
 
             <div className="max-w-2xl">
               <DestinationSearch />
-            </div>
+            </div>            
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link
@@ -333,6 +333,13 @@ export default function HomePage() {
               >
                 Explore Destinations <ArrowRight size={18} />
               </Link>
+
+                <Link
+                  href="/trip-planner"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-orange-500 bg-orange-500/10 px-7 py-4 text-sm font-bold text-orange-300 transition hover:bg-orange-500/20"
+                >
+                  Plan Trip <ArrowRight size={18} />
+                </Link>
 
               <Link
                 href="/itineraries"
