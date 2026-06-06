@@ -17,7 +17,7 @@ import {
   searchDestinationSuggestions
 } from "@/lib/exploreDestinationApi";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ExplorePage() {
   const [query, setQuery] = useState("");
@@ -30,8 +30,49 @@ export default function ExplorePage() {
   const [selectedSuggestion, setSelectedSuggestion] = useState<string | null>(null);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
 
+  const suppressAutocompleteRef = useRef("");
+
+// useEffect(() => {
+//   const value = query.trim();
+
+//   if (
+//     selectedSuggestion &&
+//     selectedSuggestion.toLowerCase() === value.toLowerCase()
+//   ) {
+//     setShowSuggestions(false);
+//     setSuggestions([]);
+//     return;
+//   }
+
+//   if (value.length < 2) {
+//     setSuggestions([]);
+//     setShowSuggestions(false);
+//     return;
+//   }
+
+//   const timer = setTimeout(async () => {
+//   const result = await searchDestinationSuggestions(value);    
+
+//     setSuggestions(result);
+//     setShowSuggestions(result.length > 0);
+//     setActiveSuggestionIndex(-1);
+//   }, 250);
+
+//   return () => clearTimeout(timer);
+// }, [query, selectedSuggestion]);
+
 useEffect(() => {
   const value = query.trim();
+
+  if (
+    suppressAutocompleteRef.current &&
+    suppressAutocompleteRef.current.toLowerCase() === value.toLowerCase()
+  ) {
+    setShowSuggestions(false);
+    setSuggestions([]);
+    setActiveSuggestionIndex(-1);
+    return;
+  }
 
   if (
     selectedSuggestion &&
@@ -39,20 +80,29 @@ useEffect(() => {
   ) {
     setShowSuggestions(false);
     setSuggestions([]);
+    setActiveSuggestionIndex(-1);
     return;
   }
 
   if (value.length < 2) {
     setSuggestions([]);
     setShowSuggestions(false);
+    setActiveSuggestionIndex(-1);
     return;
   }
 
   const timer = setTimeout(async () => {
-  const result = await searchDestinationSuggestions(value);    
+    const result = await searchDestinationSuggestions(value);
 
-    //setSuggestions(result);
-    //setShowSuggestions(result.length > 0);
+    if (
+      suppressAutocompleteRef.current &&
+      suppressAutocompleteRef.current.toLowerCase() === value.toLowerCase()
+    ) {
+      setShowSuggestions(false);
+      setSuggestions([]);
+      setActiveSuggestionIndex(-1);
+      return;
+    }
 
     setSuggestions(result);
     setShowSuggestions(result.length > 0);
@@ -122,20 +172,15 @@ useEffect(() => {
 
                     <input
                       value={query}
-                      //onChange={(e) => setQuery(e.target.value)}
+                      // onChange={(e) => {
+                      //   setQuery(e.target.value);
+                      //   setSelectedSuggestion(null);
+                      // }}
                       onChange={(e) => {
+                        suppressAutocompleteRef.current = "";
                         setQuery(e.target.value);
                         setSelectedSuggestion(null);
                       }}
-                      // onKeyDown={(e) => {
-                      //   if (e.key === "Enter") {
-                      //     e.preventDefault();
-                      //     setShowSuggestions(false);
-                      //     setSuggestions([]);
-                      //     handleExplore();
-                      //   }
-                      // }}
-
                       onKeyDown={(e) => {
                         if (e.key === "ArrowDown") {
                           e.preventDefault();
@@ -199,7 +244,6 @@ useEffect(() => {
 
                     {showSuggestions && suggestions.length > 0 && (
                       <div className="absolute left-0 right-0 top-[72px] z-50 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl">
-                        {/* {suggestions.map((item) => ( */}
                         {suggestions.map((item, index) => (
                           <button
                             key={item}
@@ -232,7 +276,6 @@ useEffect(() => {
 
                 <button
                   type="button"
-                  //onClick={() => handleExplore()}
                   onClick={() => {
                     setShowSuggestions(false);
                     setSuggestions([]);
@@ -259,8 +302,23 @@ useEffect(() => {
                   <button
                     key={item}
                     type="button"
+                    // onClick={() => {
+                    //   setQuery(item);
+                    //   setSelectedSuggestion(item);
+                    //   setShowSuggestions(false);
+                    //   setSuggestions([]);
+                    //   setActiveSuggestionIndex(-1);
+                    //   handleExplore(item);
+                    // }}
                     onClick={() => {
+                      suppressAutocompleteRef.current = item;
+
                       setQuery(item);
+                      setSelectedSuggestion(item);
+                      setShowSuggestions(false);
+                      setSuggestions([]);
+                      setActiveSuggestionIndex(-1);
+
                       handleExplore(item);
                     }}
                     className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-2 text-xs font-bold text-zinc-700 transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600"
