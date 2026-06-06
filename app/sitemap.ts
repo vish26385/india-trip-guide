@@ -5,17 +5,31 @@ import { itineraries } from "@/data/itineraries";
 const baseUrl = "https://www.indiatripguide.com";
 
 export default function sitemap() {
-  const staticPages = [
-    "",
-    "/destinations",
-    "/itineraries",
-    "/blog",
-    "/about",
-    "/contact",
-    "/privacy-policy",
-    "/terms",
-    "/disclaimer",
-  ];
+  // const staticPages = [
+  //   "",
+  //   "/destinations",
+  //   "/itineraries",
+  //   "/blog",
+  //   "/about",
+  //   "/contact",
+  //   "/privacy-policy",
+  //   "/terms",
+  //   "/disclaimer",
+  // ];
+
+const staticPages = [
+  "",
+  "/destinations",
+  "/itineraries",
+  "/blog",
+  "/explore",
+  "/trip-planner",
+  "/about",
+  "/contact",
+  "/privacy-policy",
+  "/terms",
+  "/disclaimer",
+];
 
   return [
     ...staticPages.map((page) => ({
