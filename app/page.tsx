@@ -280,7 +280,8 @@ import ItineraryCard from "@/components/cards/ItineraryCard";
 import BlogCard from "@/components/cards/BlogCard";
 import SectionHeading from "@/components/shared/SectionHeading";
 import DestinationSearch from "@/components/shared/DestinationSearch";
-
+import RegionExplorer from "@/components/home/RegionExplorer";
+import MostPopularDestinations from "@/components/home/MostPopularDestinations";
 import { destinations } from "@/data/destinations";
 import { itineraries } from "@/data/itineraries";
 import { blogs } from "@/data/blogs";
@@ -399,6 +400,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <RegionExplorer />
+
+      <MostPopularDestinations />
 
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading
