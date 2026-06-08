@@ -367,7 +367,7 @@ const featuredBlogs = featuredBlogSlugs
               {[
                 ["30+", "Destinations"],
                 ["30+", "Itineraries"],
-                ["30+", "Guides"],
+                ["40+", "Guides"],
               ].map(([number, label]) => (
                 <div
                   key={label}
