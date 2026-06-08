@@ -421,53 +421,310 @@ export const itineraries: Itinerary[] = [
     { day: "Day 3", title: "Fatehpur Sikri & Departure", plan: ["Visit Fatehpur Sikri", "Local shopping", "Departure"] },
   ],
 },
-// {
-//   slug: "4-days-in-amritsar",
-//   title: "4 Days in Amritsar Itinerary",
-//   destination: "Amritsar",
-//   duration: "4 Days",
-//   budget: "₹10,000 - ₹22,000",
-//   image: "/images/amritsar.jpg",
-//   overview: "An Amritsar itinerary covering the Golden Temple, Wagah Border, local food, history, and Punjabi culture.",
-//   days: [
-//     { day: "Day 1", title: "Arrival & Golden Temple", plan: ["Reach Amritsar", "Check in", "Visit Golden Temple in evening"] },
-//     { day: "Day 2", title: "Jallianwala Bagh & Local Food", plan: ["Visit Jallianwala Bagh", "Explore local food streets", "Return to Golden Temple"] },
-//     { day: "Day 3", title: "Wagah Border", plan: ["Relaxed morning", "Visit local markets", "Attend Wagah Border ceremony"] },
-//     { day: "Day 4", title: "Departure", plan: ["Breakfast", "Short local visit", "Departure"] },
-//   ],
-// },
-// {
-//   slug: "5-days-in-coorg-ooty",
-//   title: "5 Days in Coorg & Ooty Itinerary",
-//   destination: "Coorg & Ooty",
-//   duration: "5 Days",
-//   budget: "₹15,000 - ₹35,000",
-//   image: "/images/coorg.jpg",
-//   overview: "A South India hill trip covering Coorg coffee estates, waterfalls, Ooty lake, viewpoints, and scenic drives.",
-//   days: [
-//     { day: "Day 1", title: "Coorg Arrival", plan: ["Reach Coorg", "Check in", "Visit coffee estate"] },
-//     { day: "Day 2", title: "Coorg Sightseeing", plan: ["Visit Abbey Falls", "Explore Raja’s Seat", "Try local food"] },
-//     { day: "Day 3", title: "Coorg to Ooty", plan: ["Drive to Ooty", "Check in", "Evening lake visit"] },
-//     { day: "Day 4", title: "Ooty Local Sightseeing", plan: ["Visit Botanical Garden", "Ride toy train if available", "Explore viewpoints"] },
-//     { day: "Day 5", title: "Departure", plan: ["Breakfast", "Local shopping", "Departure"] },
-//   ],
-// },
-// {
-//   slug: "7-days-rajasthan-road-trip",
-//   title: "7 Days Rajasthan Road Trip",
-//   destination: "Rajasthan",
-//   duration: "7 Days",
-//   budget: "₹20,000 - ₹50,000",
-//   image: "/images/rajasthan-roadtrip.jpg",
-//   overview: "A classic Rajasthan road trip covering Jaipur, Jodhpur, Jaisalmer, and Udaipur with forts, lakes, deserts, and royal culture.",
-//   days: [
-//     { day: "Day 1", title: "Jaipur Arrival", plan: ["Reach Jaipur", "Check in", "Visit City Palace and Hawa Mahal"] },
-//     { day: "Day 2", title: "Jaipur Forts", plan: ["Visit Amber Fort", "Explore Nahargarh Fort", "Shop at local markets"] },
-//     { day: "Day 3", title: "Jaipur to Jodhpur", plan: ["Drive to Jodhpur", "Check in", "Explore Clock Tower Market"] },
-//     { day: "Day 4", title: "Jodhpur Sightseeing", plan: ["Visit Mehrangarh Fort", "Explore Jaswant Thada", "Walk through blue city lanes"] },
-//     { day: "Day 5", title: "Jodhpur to Jaisalmer", plan: ["Drive to Jaisalmer", "Check in", "Visit Gadisar Lake"] },
-//     { day: "Day 6", title: "Jaisalmer Desert", plan: ["Visit Jaisalmer Fort", "Go to Sam Sand Dunes", "Desert camp stay"] },
-//     { day: "Day 7", title: "Departure", plan: ["Sunrise in desert", "Breakfast", "Departure"] },
-//   ],
-// },
+
+{
+  slug: "5-days-in-leh-ladakh",
+  title: "5 Days in Leh Ladakh Itinerary",
+  destination: "Leh",
+  duration: "5 Days",
+  budget: "₹18,000 - ₹40,000",
+  image:
+    "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=1400&auto=format&fit=crop",
+  overview:
+    "A scenic Leh itinerary covering monasteries, high-altitude landscapes, Pangong Lake, and local culture.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival & Acclimatization",
+      plan: ["Check in", "Rest due to altitude", "Evening market walk"],
+    },
+    {
+      day: "Day 2",
+      title: "Leh Local Sightseeing",
+      plan: ["Shanti Stupa", "Leh Palace", "Hall of Fame"],
+    },
+    {
+      day: "Day 3",
+      title: "Pangong Lake",
+      plan: ["Drive to Pangong", "Photography", "Lakeside stay"],
+    },
+    {
+      day: "Day 4",
+      title: "Monasteries & Local Culture",
+      plan: ["Thiksey Monastery", "Shey Palace", "Local cafes"],
+    },
+    {
+      day: "Day 5",
+      title: "Departure",
+      plan: ["Shopping", "Airport transfer"],
+    },
+  ],
+},
+{
+  slug: "4-days-in-coorg",
+  title: "4 Days in Coorg Itinerary",
+  destination: "Coorg",
+  duration: "4 Days",
+  budget: "₹12,000 - ₹25,000",
+  image:
+    "/images/coorg.jpg",
+  overview:
+    "A relaxing Coorg itinerary with coffee plantations, waterfalls, viewpoints, and local cuisine.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival & Coffee Estates",
+      plan: ["Check in", "Coffee plantation tour", "Local food"],
+    },
+    {
+      day: "Day 2",
+      title: "Abbey Falls & Raja's Seat",
+      plan: ["Visit Abbey Falls", "Raja's Seat", "Sunset views"],
+    },
+    {
+      day: "Day 3",
+      title: "Dubare & Nature",
+      plan: ["Dubare Elephant Camp", "Nature walk", "Photography"],
+    },
+    {
+      day: "Day 4",
+      title: "Markets & Departure",
+      plan: ["Local shopping", "Departure"],
+    },
+  ],
+},
+{
+  slug: "4-days-in-ooty",
+  title: "4 Days in Ooty Itinerary",
+  destination: "Ooty",
+  duration: "4 Days",
+  budget: "₹10,000 - ₹22,000",
+  image:
+    "https://images.unsplash.com/photo-1626014303757-6366ef55c4ab?q=80&w=1400&auto=format&fit=crop",
+  overview:
+    "Explore tea gardens, lakes, viewpoints, and the charming Nilgiri hills in Ooty.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival & Ooty Lake",
+      plan: ["Check in", "Boating at Ooty Lake", "Market visit"],
+    },
+    {
+      day: "Day 2",
+      title: "Botanical Garden & Rose Garden",
+      plan: ["Botanical Garden", "Rose Garden", "Local cafes"],
+    },
+    {
+      day: "Day 3",
+      title: "Doddabetta Peak",
+      plan: ["Doddabetta Peak", "Tea factory visit", "Photography"],
+    },
+    {
+      day: "Day 4",
+      title: "Shopping & Departure",
+      plan: ["Tea shopping", "Departure"],
+    },
+  ],
+},
+{
+  slug: "5-days-in-spiti-valley",
+  title: "5 Days in Spiti Valley Itinerary",
+  destination: "Spiti Valley",
+  duration: "5 Days",
+  budget: "₹18,000 - ₹40,000",
+  image:
+    "/images/spiti-valley.jpg",
+  overview:
+    "Discover monasteries, villages, mountain landscapes, and the unique beauty of Spiti Valley.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival at Kaza",
+      plan: ["Check in", "Local exploration", "Acclimatization"],
+    },
+    {
+      day: "Day 2",
+      title: "Key Monastery",
+      plan: ["Visit Key Monastery", "Kibber Village", "Photography"],
+    },
+    {
+      day: "Day 3",
+      title: "Langza & Hikkim",
+      plan: ["Langza", "Hikkim Post Office", "Komik Village"],
+    },
+    {
+      day: "Day 4",
+      title: "Chandratal Excursion",
+      plan: ["Visit Chandratal Lake", "Nature views"],
+    },
+    {
+      day: "Day 5",
+      title: "Departure",
+      plan: ["Breakfast", "Return journey"],
+    },
+  ],
+},
+{
+  slug: "3-days-in-kasol",
+  title: "3 Days in Kasol Itinerary",
+  destination: "Kasol",
+  duration: "3 Days",
+  budget: "₹8,000 - ₹18,000",
+  image:
+    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1400&auto=format&fit=crop",
+  overview:
+    "A peaceful Kasol itinerary featuring riverside cafes, mountain views, and village walks.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival & Cafe Exploration",
+      plan: ["Check in", "Explore cafes", "River walk"],
+    },
+    {
+      day: "Day 2",
+      title: "Manikaran & Villages",
+      plan: ["Visit Manikaran", "Explore nearby villages"],
+    },
+    {
+      day: "Day 3",
+      title: "Nature & Departure",
+      plan: ["Morning hike", "Photography", "Departure"],
+    },
+  ],
+},
+{
+  slug: "3-days-in-dwarka",
+  title: "3 Days in Dwarka Itinerary",
+  destination: "Dwarka",
+  duration: "3 Days",
+  budget: "₹8,000 - ₹20,000",
+  image:
+    "/images/dwarka.jpg",
+  overview:
+    "Explore temples, spiritual heritage, coastal views, and local culture in Dwarka.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Dwarkadhish Temple",
+      plan: ["Temple visit", "Gomti Ghat", "Evening aarti"],
+    },
+    {
+      day: "Day 2",
+      title: "Bet Dwarka",
+      plan: ["Boat ride", "Temple visits", "Coastal sightseeing"],
+    },
+    {
+      day: "Day 3",
+      title: "Local Attractions",
+      plan: ["Sudama Setu", "Shopping", "Departure"],
+    },
+  ],
+},
+{
+  slug: "2-days-in-somnath",
+  title: "2 Days in Somnath Itinerary",
+  destination: "Somnath",
+  duration: "2 Days",
+  budget: "₹8,000 - ₹18,000",
+  image:
+    "/images/somnath.jpg",
+  overview:
+    "A spiritual getaway focused on Somnath Temple, coastal views, and local attractions.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Temple & Beach",
+      plan: ["Somnath Temple", "Beach walk", "Evening aarti"],
+    },
+    {
+      day: "Day 2",
+      title: "Nearby Attractions",
+      plan: ["Bhalka Tirth", "Triveni Sangam", "Departure"],
+    },
+  ],
+},
+{
+  slug: "3-days-in-gir-national-park",
+  title: "3 Days in Gir National Park Itinerary",
+  destination: "Gir National Park",
+  duration: "3 Days",
+  budget: "₹10,000 - ₹25,000",
+  image:
+    "/images/gir.jpg",
+  overview:
+    "A wildlife-focused itinerary featuring lion safaris, nature experiences, and photography.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival & Nature Resort",
+      plan: ["Check in", "Nature walk", "Relax"],
+    },
+    {
+      day: "Day 2",
+      title: "Lion Safari",
+      plan: ["Morning safari", "Photography", "Wildlife spotting"],
+    },
+    {
+      day: "Day 3",
+      title: "Devalia & Departure",
+      plan: ["Visit Devalia", "Departure"],
+    },
+  ],
+},
+{
+  slug: "3-days-in-mahabaleshwar",
+  title: "3 Days in Mahabaleshwar Itinerary",
+  destination: "Mahabaleshwar",
+  duration: "3 Days",
+  budget: "₹8,000 - ₹20,000",
+  image:
+    "/images/mahabaleshwar.jpg",
+  overview:
+    "Enjoy viewpoints, strawberry farms, lakes, and cool weather in Mahabaleshwar.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival & Venna Lake",
+      plan: ["Check in", "Boating", "Market visit"],
+    },
+    {
+      day: "Day 2",
+      title: "Viewpoints",
+      plan: ["Arthur Seat", "Elephant Head Point", "Photography"],
+    },
+    {
+      day: "Day 3",
+      title: "Mapro Garden & Departure",
+      plan: ["Visit Mapro Garden", "Shopping", "Departure"],
+    },
+  ],
+},
+{
+  slug: "3-days-in-diu",
+  title: "3 Days in Diu Itinerary",
+  destination: "Diu",
+  duration: "3 Days",
+  budget: "₹8,000 - ₹20,000",
+  image:
+    "/images/diu.jpg",
+  overview:
+    "A coastal itinerary covering beaches, forts, Portuguese heritage, and relaxation.",
+  days: [
+    {
+      day: "Day 1",
+      title: "Arrival & Nagoa Beach",
+      plan: ["Check in", "Beach time", "Sunset views"],
+    },
+    {
+      day: "Day 2",
+      title: "Fort & Heritage",
+      plan: ["Diu Fort", "St. Paul's Church", "Naida Caves"],
+    },
+    {
+      day: "Day 3",
+      title: "Relax & Departure",
+      plan: ["Morning beach walk", "Shopping", "Departure"],
+    },
+  ],
+},
 ];

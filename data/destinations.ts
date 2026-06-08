@@ -78,7 +78,7 @@ export const destinations: Destination[] = [
           "North Goa is famous for nightlife while South Goa is calmer and more relaxing.",
       },
     ],
-    tags: ["beach", "honeymoon", "budget"],
+    tags: ["beach", "coastal", "weekend", "honeymoon", "budget"]
   },
   {
     slug: "jaipur",
@@ -242,7 +242,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Scuba diving", "Snorkeling", "Beach hopping", "Island ferry rides"],
     travelTips: ["Book ferries in advance", "Keep buffer time for weather", "Carry beach essentials"],
     faqs: [{ question: "How many days are enough for Andaman?", answer: "5 to 6 days are ideal for Port Blair, Havelock, and Neil Island." }],
-    tags: ["beach", "honeymoon", "adventure"],
+    tags: ["beach", "coastal", "honeymoon", "adventure"]
   },
   {
     slug: "mumbai",
@@ -273,7 +273,7 @@ export const destinations: Destination[] = [
     thingsToDo: ["Cafe hopping", "Beach walk", "Visit Auroville", "Explore French streets"],
     travelTips: ["Rent a scooter", "Stay near White Town", "Visit cafes early"],
     faqs: [{ question: "How many days are enough for Pondicherry?", answer: "2 to 3 days are enough for Pondicherry." }],
-    tags: ["beach", "honeymoon", "weekend"],
+    tags: ["beach", "coastal", "honeymoon", "weekend"],
   },
   {
     slug: "mount-abu",
@@ -498,5 +498,457 @@ export const destinations: Destination[] = [
     },
   ],
   tags: ["heritage", "family", "weekend"],
+},
+
+
+{
+  slug: "leh",
+  name: "Leh",
+  tagline: "Gateway to Ladakh",
+  description:
+    "Leh is a high-altitude destination in Ladakh, famous for monasteries, mountain views, scenic roads, and peaceful Himalayan landscapes.",
+  image:
+    "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=1400&auto=format&fit=crop",
+  bestTime: "May to September",
+  budget: "₹25,000 - ₹50,000",
+  duration: "5-7 Days",
+  highlights: [
+    "Shanti Stupa",
+    "Leh Palace",
+    "Pangong Lake",
+    "Nubra Valley",
+    "Khardung La",
+  ],
+  thingsToDo: [
+    "Visit monasteries",
+    "Explore Leh Market",
+    "Take a road trip to Pangong Lake",
+    "Visit Nubra Valley",
+    "Enjoy mountain photography",
+  ],
+  travelTips: [
+    "Keep one day for acclimatization",
+    "Carry warm clothes even in summer",
+    "Drink enough water at high altitude",
+    "Check permits and road conditions before travel",
+  ],
+  faqs: [
+    {
+      question: "What is the best time to visit Leh?",
+      answer:
+        "May to September is generally the best time to visit Leh for sightseeing and road trips.",
+    },
+    {
+      question: "How many days are enough for Leh?",
+      answer:
+        "5 to 7 days are ideal to explore Leh, Nubra Valley, Pangong Lake, and nearby attractions comfortably.",
+    },
+  ],
+  tags: ["adventure", "mountain", "roadtrip"],
+},
+{
+  slug: "coorg",
+  name: "Coorg",
+  tagline: "The Coffee Country of Karnataka",
+  description:
+    "Coorg is a peaceful hill destination in Karnataka, known for coffee plantations, waterfalls, misty hills, and relaxing nature stays.",
+  image:
+    "/images/coorg.jpg",
+  bestTime: "October to March",
+  budget: "₹10,000 - ₹25,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Abbey Falls",
+    "Raja's Seat",
+    "Dubare Elephant Camp",
+    "Coffee Plantations",
+    "Talacauvery",
+  ],
+  thingsToDo: [
+    "Visit coffee estates",
+    "Explore Abbey Falls",
+    "Watch sunset at Raja's Seat",
+    "Visit Dubare Elephant Camp",
+    "Try local Coorg cuisine",
+  ],
+  travelTips: [
+    "Book plantation stays early on weekends",
+    "Carry light woolens during winter",
+    "Road travel is the best way to explore Coorg",
+    "Monsoon is scenic but roads can be slippery",
+  ],
+  faqs: [
+    {
+      question: "What is Coorg famous for?",
+      answer:
+        "Coorg is famous for coffee plantations, waterfalls, misty hills, and peaceful nature stays.",
+    },
+    {
+      question: "How many days are enough for Coorg?",
+      answer:
+        "2 to 3 days are enough for a relaxed Coorg trip covering major attractions.",
+    },
+  ],
+  tags: ["weekend", "hill", "nature"],
+},
+{
+  slug: "ooty",
+  name: "Ooty",
+  tagline: "Queen of the Nilgiris",
+  description:
+    "Ooty is a famous hill station in Tamil Nadu, known for cool weather, tea gardens, lakes, viewpoints, and family-friendly sightseeing.",
+  image:
+    "https://images.unsplash.com/photo-1626014303757-6366ef55c4ab?q=80&w=1400&auto=format&fit=crop",
+  bestTime: "October to June",
+  budget: "₹10,000 - ₹25,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Ooty Lake",
+    "Botanical Garden",
+    "Doddabetta Peak",
+    "Tea Gardens",
+    "Nilgiri Mountain Railway",
+  ],
+  thingsToDo: [
+    "Enjoy boating at Ooty Lake",
+    "Visit Botanical Garden",
+    "Explore tea plantations",
+    "Ride the Nilgiri Mountain Railway",
+    "Visit Doddabetta Peak",
+  ],
+  travelTips: [
+    "Carry warm clothes due to cool weather",
+    "Book hotels early during holidays",
+    "Start sightseeing early to avoid crowds",
+    "Keep motion sickness medicine for ghat roads",
+  ],
+  faqs: [
+    {
+      question: "What is the best time to visit Ooty?",
+      answer:
+        "October to June is a good time to visit Ooty, with pleasant weather for sightseeing.",
+    },
+    {
+      question: "Is Ooty good for family trips?",
+      answer:
+        "Yes, Ooty is a popular family destination with gardens, lakes, viewpoints, and easy sightseeing options.",
+    },
+  ],
+  tags: ["hill", "family", "weekend"],
+},
+{
+  slug: "spiti-valley",
+  name: "Spiti Valley",
+  tagline: "The Cold Desert of Himachal",
+  description:
+    "Spiti Valley is a remote Himalayan destination in Himachal Pradesh, known for monasteries, rugged landscapes, high-altitude villages, and adventure road trips.",
+  image:
+    "/images/spiti-valley.jpg",
+  bestTime: "May to October",
+  budget: "₹25,000 - ₹55,000",
+  duration: "6-8 Days",
+  highlights: [
+    "Key Monastery",
+    "Kaza",
+    "Chandratal Lake",
+    "Tabo Monastery",
+    "Hikkim",
+  ],
+  thingsToDo: [
+    "Visit Key Monastery",
+    "Explore Kaza",
+    "See Chandratal Lake",
+    "Visit high-altitude villages",
+    "Enjoy road trip photography",
+  ],
+  travelTips: [
+    "Prepare for long road journeys",
+    "Carry warm clothes even in summer",
+    "Keep buffer days for weather or road delays",
+    "Travel slowly to adjust to altitude",
+  ],
+  faqs: [
+    {
+      question: "What is the best time to visit Spiti Valley?",
+      answer:
+        "May to October is generally the best time for Spiti Valley road trips and sightseeing.",
+    },
+    {
+      question: "How many days are enough for Spiti Valley?",
+      answer:
+        "6 to 8 days are ideal because Spiti requires long travel time and slow high-altitude travel.",
+    },
+  ],
+  tags: ["adventure", "roadtrip", "mountain"],
+},
+{
+  slug: "kasol",
+  name: "Kasol",
+  tagline: "Backpacker Village of Himachal",
+  description:
+    "Kasol is a popular village in Himachal Pradesh, known for Parvati Valley views, cafes, riverside stays, short treks, and backpacker culture.",
+  image:
+    "/images/kasol.jpg",
+  bestTime: "March to June and October to November",
+  budget: "₹8,000 - ₹20,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Parvati River",
+    "Manikaran Sahib",
+    "Chalal",
+    "Tosh",
+    "Cafes in Kasol",
+  ],
+  thingsToDo: [
+    "Relax near Parvati River",
+    "Visit Manikaran Sahib",
+    "Walk to Chalal",
+    "Explore local cafes",
+    "Take short treks nearby",
+  ],
+  travelTips: [
+    "Carry cash as network/payment issues can happen",
+    "Respect local culture and nature",
+    "Pack warm layers for evenings",
+    "Avoid risky river spots during monsoon",
+  ],
+  faqs: [
+    {
+      question: "What is Kasol famous for?",
+      answer:
+        "Kasol is famous for Parvati Valley views, cafes, riverside stays, backpacker culture, and nearby short treks.",
+    },
+    {
+      question: "How many days are enough for Kasol?",
+      answer:
+        "2 to 3 days are enough for Kasol, Manikaran, Chalal, cafes, and nearby experiences.",
+    },
+  ],
+  tags: ["budget", "backpacker", "mountain"],
+},
+{
+  slug: "dwarka",
+  name: "Dwarka",
+  tagline: "Kingdom of Lord Krishna",
+  description:
+    "Dwarka is one of India's most important Hindu pilgrimage destinations, famous for Dwarkadhish Temple, spiritual heritage, and coastal views along the Arabian Sea.",
+  image:
+    "/images/dwarka.jpg",
+  bestTime: "October to March",
+  budget: "₹8,000 - ₹20,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Dwarkadhish Temple",
+    "Bet Dwarka",
+    "Sudama Setu",
+    "Rukmini Devi Temple",
+    "Gomti Ghat",
+  ],
+  thingsToDo: [
+    "Attend temple aarti",
+    "Visit Bet Dwarka",
+    "Explore Gomti Ghat",
+    "See sunset by the coast",
+    "Visit nearby temples",
+  ],
+  travelTips: [
+    "Visit early morning for a peaceful temple experience",
+    "Carry modest clothing for temple visits",
+    "Avoid peak festival crowds if seeking a relaxed trip",
+    "Keep cash for local purchases",
+  ],
+  faqs: [
+    {
+      question: "What is Dwarka famous for?",
+      answer:
+        "Dwarka is famous for the Dwarkadhish Temple and its connection with Lord Krishna.",
+    },
+    {
+      question: "How many days are enough for Dwarka?",
+      answer:
+        "2 to 3 days are usually enough to explore Dwarka and nearby attractions.",
+    },
+  ],
+  tags: ["spiritual", "family", "heritage"],
+},
+{
+  slug: "somnath",
+  name: "Somnath",
+  tagline: "The Eternal Jyotirlinga",
+  description:
+    "Somnath is one of the most sacred pilgrimage destinations in India, known for the historic Somnath Temple located on the Arabian Sea coast of Gujarat.",
+  image:
+    "/images/somnath.jpg",
+  bestTime: "October to March",
+  budget: "₹8,000 - ₹18,000",
+  duration: "2 Days",
+  highlights: [
+    "Somnath Temple",
+    "Triveni Sangam",
+    "Somnath Beach",
+    "Bhalka Tirth",
+    "Light and Sound Show",
+  ],
+  thingsToDo: [
+    "Attend temple aarti",
+    "Watch the evening light show",
+    "Visit Triveni Sangam",
+    "Explore Bhalka Tirth",
+    "Enjoy coastal views",
+  ],
+  travelTips: [
+    "Attend evening aarti for the best experience",
+    "Carry light cotton clothes in summer",
+    "Book accommodation near the temple area",
+    "Respect temple dress and photography rules",
+  ],
+  faqs: [
+    {
+      question: "Why is Somnath famous?",
+      answer:
+        "Somnath is famous for the Somnath Jyotirlinga Temple, one of the most sacred Shiva temples in India.",
+    },
+    {
+      question: "Can Dwarka and Somnath be covered together?",
+      answer:
+        "Yes, many travelers combine Dwarka and Somnath in the same Gujarat pilgrimage trip.",
+    },
+  ],
+  tags: ["spiritual", "pilgrimage", "heritage"],
+},
+{
+  slug: "gir-national-park",
+  name: "Gir National Park",
+  tagline: "Home of the Asiatic Lion",
+  description:
+    "Gir National Park is the only place in the world where Asiatic lions can be seen in the wild, making it one of India's most important wildlife destinations.",
+  image:
+    "/images/gir-new.jpg",
+  bestTime: "December to March",
+  budget: "₹10,000 - ₹25,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Lion Safari",
+    "Devalia Safari Park",
+    "Wildlife Photography",
+    "Bird Watching",
+    "Forest Landscapes",
+  ],
+  thingsToDo: [
+    "Take a lion safari",
+    "Visit Devalia Interpretation Zone",
+    "Enjoy wildlife photography",
+    "Spot birds and other animals",
+    "Stay in nature resorts",
+  ],
+  travelTips: [
+    "Book safari permits in advance",
+    "Carry binoculars and camera gear",
+    "Follow forest department guidelines",
+    "Avoid loud noises during safaris",
+  ],
+  faqs: [
+    {
+      question: "What is Gir National Park famous for?",
+      answer:
+        "Gir National Park is famous as the last natural habitat of Asiatic lions.",
+    },
+    {
+      question: "How many safaris should I book in Gir?",
+      answer:
+        "At least 2 safari sessions increase the chances of wildlife sightings.",
+    },
+  ],
+  tags: ["wildlife", "family", "nature"],
+},
+{
+  slug: "mahabaleshwar",
+  name: "Mahabaleshwar",
+  tagline: "The Strawberry Capital of India",
+  description:
+    "Mahabaleshwar is a scenic hill station in Maharashtra known for viewpoints, strawberry farms, valleys, pleasant weather, and weekend getaways.",
+  image:
+    "/images/mahabaleshwar.jpg",
+  bestTime: "October to June",
+  budget: "₹8,000 - ₹20,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Arthur Seat Point",
+    "Elephant's Head Point",
+    "Venna Lake",
+    "Mapro Garden",
+    "Strawberry Farms",
+  ],
+  thingsToDo: [
+    "Visit scenic viewpoints",
+    "Enjoy boating at Venna Lake",
+    "Taste fresh strawberries",
+    "Explore Mapro Garden",
+    "Watch sunrise and sunset",
+  ],
+  travelTips: [
+    "Weekdays are less crowded than weekends",
+    "Carry light jackets during winter",
+    "Start sightseeing early for better views",
+    "Monsoon offers beautiful greenery",
+  ],
+  faqs: [
+    {
+      question: "What is Mahabaleshwar famous for?",
+      answer:
+        "Mahabaleshwar is famous for viewpoints, strawberries, pleasant weather, and scenic valleys.",
+    },
+    {
+      question: "How many days are enough for Mahabaleshwar?",
+      answer:
+        "2 to 3 days are enough to cover major attractions comfortably.",
+    },
+  ],
+  tags: ["hill", "family", "weekend"],
+},
+{
+  slug: "diu",
+  name: "Diu",
+  tagline: "Peaceful Island Getaway",
+  description:
+    "Diu is a coastal destination known for beaches, Portuguese heritage, forts, seafood, and a relaxed atmosphere away from crowded tourist hubs.",
+  image:
+    "/images/diu.jpg",
+  bestTime: "October to March",
+  budget: "₹8,000 - ₹20,000",
+  duration: "2-3 Days",
+  highlights: [
+    "Diu Fort",
+    "Nagoa Beach",
+    "St. Paul's Church",
+    "Sunset Point",
+    "Naida Caves",
+  ],
+  thingsToDo: [
+    "Relax at beaches",
+    "Visit Diu Fort",
+    "Explore Naida Caves",
+    "Watch sunset by the sea",
+    "Try local seafood",
+  ],
+  travelTips: [
+    "Rent a scooter for local travel",
+    "Carry sunscreen and sunglasses",
+    "Visit beaches early morning or evening",
+    "Avoid peak afternoon heat in summer",
+  ],
+  faqs: [
+    {
+      question: "What is Diu famous for?",
+      answer:
+        "Diu is famous for beaches, Portuguese architecture, forts, and a peaceful coastal atmosphere.",
+    },
+    {
+      question: "Is Diu good for a weekend trip?",
+      answer:
+        "Yes, Diu is one of the best coastal weekend destinations in western India.",
+    },
+  ],
+  tags: ["beach", "coastal", "weekend", "family"],
 },
 ];

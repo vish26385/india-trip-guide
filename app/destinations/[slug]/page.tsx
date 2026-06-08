@@ -765,81 +765,194 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-function getRelatedDestinations(currentDestination: (typeof destinations)[number]) {
-  const stopWords = new Set([
-    "the",
-    "and",
-    "for",
-    "with",
-    "from",
-    "this",
-    "that",
-    "your",
-    "you",
-    "are",
-    "is",
-    "in",
-    "of",
-    "to",
-    "a",
-    "an",
-    "trip",
-    "travel",
-    "india",
-    "destination",
-  ]);
+// function getRelatedDestinations(currentDestination: (typeof destinations)[number]) {
+//   const stopWords = new Set([
+//     "the",
+//     "and",
+//     "for",
+//     "with",
+//     "from",
+//     "this",
+//     "that",
+//     "your",
+//     "you",
+//     "are",
+//     "is",
+//     "in",
+//     "of",
+//     "to",
+//     "a",
+//     "an",
+//     "trip",
+//     "travel",
+//     "india",
+//     "destination",
+//   ]);
 
-  const getWords = (text: string) =>
-    text
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, " ")
-      .split(/\s+/)
-      .filter((word) => word.length > 3 && !stopWords.has(word));
+//   const getWords = (text: string) =>
+//     text
+//       .toLowerCase()
+//       .replace(/[^a-z0-9\s]/g, " ")
+//       .split(/\s+/)
+//       .filter((word) => word.length > 3 && !stopWords.has(word));
+
+//   const currentText = [
+//     currentDestination.name,
+//     currentDestination.tagline,
+//     currentDestination.description,
+//     currentDestination.bestTime,
+//     currentDestination.budget,
+//     currentDestination.duration,
+//     currentDestination.highlights.join(" "),
+//     currentDestination.thingsToDo.join(" "),
+//     currentDestination.travelTips.join(" "),
+//   ].join(" ");
+
+//   const currentWords = new Set(getWords(currentText));
+
+//   const scored = destinations
+//     .filter((item) => item.slug !== currentDestination.slug)
+//     .map((item) => {
+//       const itemText = [
+//         item.name,
+//         item.tagline,
+//         item.description,
+//         item.bestTime,
+//         item.budget,
+//         item.duration,
+//         item.highlights.join(" "),
+//         item.thingsToDo.join(" "),
+//         item.travelTips.join(" "),
+//       ].join(" ");
+
+//       const itemWords = getWords(itemText);
+
+//       let score = 0;
+
+//       itemWords.forEach((word) => {
+//         if (currentWords.has(word)) {
+//           score += 1;
+//         }
+//       });
+
+//       if (
+//         item.tagline.toLowerCase() ===
+//         currentDestination.tagline.toLowerCase()
+//       ) {
+//         score += 5;
+//       }
+
+//       return {
+//         destination: item,
+//         score,
+//       };
+//     })
+//     .sort((a, b) => b.score - a.score);
+
+//   const bestMatches = scored
+//     .filter((item) => item.score > 0)
+//     .slice(0, 3)
+//     .map((item) => item.destination);
+
+//   if (bestMatches.length >= 3) {
+//     return bestMatches;
+//   }
+
+//   const fallback = destinations
+//     .filter(
+//       (item) =>
+//         item.slug !== currentDestination.slug &&
+//         !bestMatches.some((match) => match.slug === item.slug)
+//     )
+//     .slice(0, 3 - bestMatches.length);
+
+//   return [...bestMatches, ...fallback];
+// }
+
+function getRelatedDestinations(currentDestination: (typeof destinations)[number]) {
+  const currentTags = new Set(
+    (currentDestination.tags ?? []).map((tag) => tag.toLowerCase())
+  );
 
   const currentText = [
     currentDestination.name,
     currentDestination.tagline,
     currentDestination.description,
-    currentDestination.bestTime,
-    currentDestination.budget,
-    currentDestination.duration,
     currentDestination.highlights.join(" "),
     currentDestination.thingsToDo.join(" "),
-    currentDestination.travelTips.join(" "),
-  ].join(" ");
+  ]
+    .join(" ")
+    .toLowerCase();
 
-  const currentWords = new Set(getWords(currentText));
+  const getCategoryBoost = (item: (typeof destinations)[number]) => {
+    const itemText = [
+      item.name,
+      item.tagline,
+      item.description,
+      item.highlights.join(" "),
+      item.thingsToDo.join(" "),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    let score = 0;
+
+    const coastalWords = ["beach", "coast", "coastal", "sea", "island"];
+    const hillWords = ["hill", "mountain", "valley", "peak", "tea"];
+    const spiritualWords = ["temple", "spiritual", "pilgrimage", "jyotirlinga"];
+    const wildlifeWords = ["wildlife", "national park", "safari", "forest"];
+    const heritageWords = ["fort", "palace", "heritage", "monument"];
+
+    const hasAny = (text: string, words: string[]) =>
+      words.some((word) => text.includes(word));
+
+    if (hasAny(currentText, coastalWords) && hasAny(itemText, coastalWords)) {
+      score += 8;
+    }
+
+    if (hasAny(currentText, hillWords) && hasAny(itemText, hillWords)) {
+      score += 8;
+    }
+
+    if (
+      hasAny(currentText, spiritualWords) &&
+      hasAny(itemText, spiritualWords)
+    ) {
+      score += 8;
+    }
+
+    if (hasAny(currentText, wildlifeWords) && hasAny(itemText, wildlifeWords)) {
+      score += 8;
+    }
+
+    if (hasAny(currentText, heritageWords) && hasAny(itemText, heritageWords)) {
+      score += 5;
+    }
+
+    return score;
+  };
 
   const scored = destinations
     .filter((item) => item.slug !== currentDestination.slug)
     .map((item) => {
-      const itemText = [
-        item.name,
-        item.tagline,
-        item.description,
-        item.bestTime,
-        item.budget,
-        item.duration,
-        item.highlights.join(" "),
-        item.thingsToDo.join(" "),
-        item.travelTips.join(" "),
-      ].join(" ");
-
-      const itemWords = getWords(itemText);
-
       let score = 0;
 
-      itemWords.forEach((word) => {
-        if (currentWords.has(word)) {
-          score += 1;
+      const itemTags = (item.tags ?? []).map((tag) => tag.toLowerCase());
+
+      itemTags.forEach((tag) => {
+        if (currentTags.has(tag)) {
+          score += 10;
         }
       });
 
-      if (
-        item.tagline.toLowerCase() ===
-        currentDestination.tagline.toLowerCase()
-      ) {
-        score += 5;
+      score += getCategoryBoost(item);
+
+      if (item.bestTime === currentDestination.bestTime) {
+        score += 1;
+      }
+
+      if (item.duration === currentDestination.duration) {
+        score += 1;
       }
 
       return {
@@ -847,26 +960,10 @@ function getRelatedDestinations(currentDestination: (typeof destinations)[number
         score,
       };
     })
+    .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score);
 
-  const bestMatches = scored
-    .filter((item) => item.score > 0)
-    .slice(0, 3)
-    .map((item) => item.destination);
-
-  if (bestMatches.length >= 3) {
-    return bestMatches;
-  }
-
-  const fallback = destinations
-    .filter(
-      (item) =>
-        item.slug !== currentDestination.slug &&
-        !bestMatches.some((match) => match.slug === item.slug)
-    )
-    .slice(0, 3 - bestMatches.length);
-
-  return [...bestMatches, ...fallback];
+  return scored.slice(0, 3).map((item) => item.destination);
 }
 
 export default async function DestinationDetailPage({ params }: PageProps) {

@@ -289,7 +289,20 @@ import { blogs } from "@/data/blogs";
 export default function HomePage() {
   const featuredDestinations = destinations.slice(0, 6);
   const featuredItineraries = itineraries.slice(0, 6);
-  const featuredBlogs = blogs.slice(0, 6);
+  //const featuredBlogs = blogs.slice(0, 6);
+
+const featuredBlogSlugs = [
+  "best-places-to-visit-in-india-in-july",
+  "best-places-to-visit-in-india-in-december",
+  "cheapest-places-to-travel-in-india",
+  "complete-leh-ladakh-travel-guide",
+  "best-family-vacation-destinations-in-india",
+  "best-weekend-getaways-in-india",
+];
+
+const featuredBlogs = featuredBlogSlugs
+  .map((slug) => blogs.find((blog) => blog.slug === slug))
+  .filter((blog): blog is (typeof blogs)[number] => Boolean(blog));
 
   return (
     <main className="overflow-hidden bg-white">
@@ -352,9 +365,9 @@ export default function HomePage() {
 
             <div className="mt-10 grid max-w-xl grid-cols-3 gap-4">
               {[
-                ["20+", "Destinations"],
-                ["20+", "Itineraries"],
-                ["22+", "Guides"],
+                ["30+", "Destinations"],
+                ["30+", "Itineraries"],
+                ["30+", "Guides"],
               ].map(([number, label]) => (
                 <div
                   key={label}
