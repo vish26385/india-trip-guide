@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,6 +84,10 @@ export default function RootLayout({
       </body> */}
 
       <body className="min-h-screen flex flex-col">
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1891964114282544"
+         crossOrigin="anonymous"></script>
+
         <Navbar />
 
         <main className="flex-1">
