@@ -1,4 +1,4 @@
-const INDEXNOW_KEY = "PASTE_YOUR_KEY_HERE";
+const INDEXNOW_KEY = "3580cb866a5e4de0b4ca4ba549190033";
 const SITE_URL = "https://indiatripguide.com";
 
 const urls = [
