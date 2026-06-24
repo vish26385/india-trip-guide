@@ -15,7 +15,7 @@ export default function ContactPage() {
           <div>
             <p className="text-sm font-semibold text-zinc-500">Email</p>
             <p className="mt-2 text-lg font-medium text-zinc-950">
-              vish26385@gmail.com
+              contact@indiatripguide.com
             </p>
           </div>
 
@@ -24,7 +24,7 @@ export default function ContactPage() {
               Collaborations
             </p>
             <p className="mt-2 text-lg font-medium text-zinc-950">
-              vish26385@gmail.com
+              support@indiatripguide.com
             </p>
           </div>
         </div>
