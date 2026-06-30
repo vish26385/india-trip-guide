@@ -1864,7 +1864,7 @@ faqs: [
   description:
     "Discover the most romantic honeymoon destinations across India.",
 
-  image: "/images/munnar-new.jpg",
+  image: "/images/munnar_new.jpg",
 
   date: "May 30, 2026",
 
