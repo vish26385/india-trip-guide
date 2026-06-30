@@ -14,24 +14,61 @@
 //     question: string;
 //     answer: string;
 //   }[];
+
+//   howToReach: {
+//     byAir: string;
+//     byRoad: string;
+//     byTrain: string;
+//   };
+
+//   localFood: string[];
+
+//   nearbyPlaces: string[];
+
+//   whereToStay: {
+//     budget: string;
+//     midRange: string;
+//     luxury: string;
+//   };
+
+//   budgetBreakdown: {
+//     backpacker: string;
+//     midRange: string;
+//     luxury: string;
+//   };
+
+//   idealDuration: string;
+
 //   tags: string[];
 // };
+
 export type Destination = {
   slug: string;
   name: string;
   tagline: string;
   description: string;
   image: string;
+
   bestTime: string;
   budget: string;
   duration: string;
-  highlights: string[];
+
+  overview: string[];
+
+  bestTimeToVisit: {
+    recommendedSeason: string;
+    winter: string;
+    summer: string;
+    monsoon: string;
+  };
+
+  mustVisitPlaces: string[];
+
   thingsToDo: string[];
+
+  localFood: string[];
+
   travelTips: string[];
-  faqs: {
-    question: string;
-    answer: string;
-  }[];
 
   howToReach: {
     byAir: string;
@@ -39,25 +76,28 @@ export type Destination = {
     byTrain: string;
   };
 
-localFood: string[];
+  nearbyPlaces: string[];
 
-nearbyPlaces: string[];
+  whereToStay: {
+    budget: string;
+    midRange: string;
+    luxury: string;
+  };
 
-whereToStay: {
-  budget: string;
-  midRange: string;
-  luxury: string;
-};
+  budgetBreakdown: {
+    backpacker: string;
+    midRange: string;
+    luxury: string;
+  };
 
-budgetBreakdown: {
-  backpacker: string;
-  midRange: string;
-  luxury: string;
-};
+  idealDuration: string;
 
-idealDuration: string;
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
 
-tags: string[];
+  tags: string[];
 };
 
 // export type BlogPost = {

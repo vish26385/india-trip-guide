@@ -1,669 +1,242 @@
-// import Link from "next/link";
-// import Image from "next/image";
-// import { notFound } from "next/navigation";
-// import {
-//   ArrowRight,
-//   CalendarDays,
-//   CheckCircle2,
-//   HelpCircle,
-//   Lightbulb,
-//   MapPin,
-//   Sparkles,
-//   Wallet,
-// } from "lucide-react";
-
-// import DestinationCard from "@/components/cards/DestinationCard";
-// import ItineraryCard from "@/components/cards/ItineraryCard";
-// import { destinations } from "@/data/destinations";
-// import { itineraries } from "@/data/itineraries";
-// import { blogs } from "@/data/blogs";
-// import Breadcrumbs from "@/components/ui/Breadcrumbs";
-
-// type PageProps = {
-//   params: Promise<{
-//     slug: string;
-//   }>;
-// };
-
-// export function generateStaticParams() {
-//   return destinations.map((destination) => ({
-//     slug: destination.slug,
-//   }));
-// }
-
-// export async function generateMetadata({ params }: PageProps) {
-//   const { slug } = await params;
-//   const destination = destinations.find((item) => item.slug === slug);
-
-//   if (!destination) {
-//     return {
-//       title: "Destination Not Found",
-//     };
-//   }
-
-//   return {
-//     title: `${destination.name} Travel Guide | IndiaTripGuide`,
-//     description: destination.description,
-//   };
-// }
-
-// // function getRelatedDestinations(currentDestination: (typeof destinations)[number]) {
-// //   const stopWords = new Set([
-// //     "the",
-// //     "and",
-// //     "for",
-// //     "with",
-// //     "from",
-// //     "this",
-// //     "that",
-// //     "your",
-// //     "you",
-// //     "are",
-// //     "is",
-// //     "in",
-// //     "of",
-// //     "to",
-// //     "a",
-// //     "an",
-// //     "trip",
-// //     "travel",
-// //     "india",
-// //     "destination",
-// //   ]);
-
-// //   const getWords = (text: string) =>
-// //     text
-// //       .toLowerCase()
-// //       .replace(/[^a-z0-9\s]/g, " ")
-// //       .split(/\s+/)
-// //       .filter((word) => word.length > 3 && !stopWords.has(word));
-
-// //   const currentText = [
-// //     currentDestination.name,
-// //     currentDestination.tagline,
-// //     currentDestination.description,
-// //     currentDestination.bestTime,
-// //     currentDestination.budget,
-// //     currentDestination.duration,
-// //     currentDestination.highlights.join(" "),
-// //     currentDestination.thingsToDo.join(" "),
-// //     currentDestination.travelTips.join(" "),
-// //   ].join(" ");
-
-// //   const currentWords = new Set(getWords(currentText));
-
-// //   const scored = destinations
-// //     .filter((item) => item.slug !== currentDestination.slug)
-// //     .map((item) => {
-// //       const itemText = [
-// //         item.name,
-// //         item.tagline,
-// //         item.description,
-// //         item.bestTime,
-// //         item.budget,
-// //         item.duration,
-// //         item.highlights.join(" "),
-// //         item.thingsToDo.join(" "),
-// //         item.travelTips.join(" "),
-// //       ].join(" ");
-
-// //       const itemWords = getWords(itemText);
-
-// //       let score = 0;
-
-// //       itemWords.forEach((word) => {
-// //         if (currentWords.has(word)) {
-// //           score += 1;
-// //         }
-// //       });
-
-// //       if (
-// //         item.tagline.toLowerCase() ===
-// //         currentDestination.tagline.toLowerCase()
-// //       ) {
-// //         score += 5;
-// //       }
-
-// //       return {
-// //         destination: item,
-// //         score,
-// //       };
-// //     })
-// //     .sort((a, b) => b.score - a.score);
-
-// //   const bestMatches = scored
-// //     .filter((item) => item.score > 0)
-// //     .slice(0, 3)
-// //     .map((item) => item.destination);
-
-// //   if (bestMatches.length >= 3) {
-// //     return bestMatches;
-// //   }
-
-// //   const fallback = destinations
-// //     .filter(
-// //       (item) =>
-// //         item.slug !== currentDestination.slug &&
-// //         !bestMatches.some((match) => match.slug === item.slug)
-// //     )
-// //     .slice(0, 3 - bestMatches.length);
-
-// //   return [...bestMatches, ...fallback];
-// // }
-
-// function getRelatedDestinations(currentDestination: (typeof destinations)[number]) {
-//   const currentTags = new Set(
-//     (currentDestination.tags ?? []).map((tag) => tag.toLowerCase())
-//   );
-
-//   const currentText = [
-//     currentDestination.name,
-//     currentDestination.tagline,
-//     currentDestination.description,
-//     currentDestination.highlights.join(" "),
-//     currentDestination.thingsToDo.join(" "),
-//   ]
-//     .join(" ")
-//     .toLowerCase();
-
-//   const getCategoryBoost = (item: (typeof destinations)[number]) => {
-//     const itemText = [
-//       item.name,
-//       item.tagline,
-//       item.description,
-//       item.highlights.join(" "),
-//       item.thingsToDo.join(" "),
-//     ]
-//       .join(" ")
-//       .toLowerCase();
-
-//     let score = 0;
-
-//     const coastalWords = ["beach", "coast", "coastal", "sea", "island"];
-//     const hillWords = ["hill", "mountain", "valley", "peak", "tea"];
-//     const spiritualWords = ["temple", "spiritual", "pilgrimage", "jyotirlinga"];
-//     const wildlifeWords = ["wildlife", "national park", "safari", "forest"];
-//     const heritageWords = ["fort", "palace", "heritage", "monument"];
-
-//     const hasAny = (text: string, words: string[]) =>
-//       words.some((word) => text.includes(word));
-
-//     if (hasAny(currentText, coastalWords) && hasAny(itemText, coastalWords)) {
-//       score += 8;
-//     }
-
-//     if (hasAny(currentText, hillWords) && hasAny(itemText, hillWords)) {
-//       score += 8;
-//     }
-
-//     if (
-//       hasAny(currentText, spiritualWords) &&
-//       hasAny(itemText, spiritualWords)
-//     ) {
-//       score += 8;
-//     }
-
-//     if (hasAny(currentText, wildlifeWords) && hasAny(itemText, wildlifeWords)) {
-//       score += 8;
-//     }
-
-//     if (hasAny(currentText, heritageWords) && hasAny(itemText, heritageWords)) {
-//       score += 5;
-//     }
-
-//     return score;
-//   };
-
-//   const scored = destinations
-//     .filter((item) => item.slug !== currentDestination.slug)
-//     .map((item) => {
-//       let score = 0;
-
-//       const itemTags = (item.tags ?? []).map((tag) => tag.toLowerCase());
-
-//       itemTags.forEach((tag) => {
-//         if (currentTags.has(tag)) {
-//           score += 10;
-//         }
-//       });
-
-//       score += getCategoryBoost(item);
-
-//       if (item.bestTime === currentDestination.bestTime) {
-//         score += 1;
-//       }
-
-//       if (item.duration === currentDestination.duration) {
-//         score += 1;
-//       }
-
-//       return {
-//         destination: item,
-//         score,
-//       };
-//     })
-//     .filter((item) => item.score > 0)
-//     .sort((a, b) => b.score - a.score);
-
-//   return scored.slice(0, 3).map((item) => item.destination);
-// }
-
-// export default async function DestinationDetailPage({ params }: PageProps) {
-//   const { slug } = await params;
-//   const destination = destinations.find((item) => item.slug === slug);
-
-//   if (!destination) {
-//     notFound();
-//   }
-
-//   const jsonLd = {
-//     "@context": "https://schema.org",
-//     "@type": "TouristDestination",
-//     name: destination.name,
-//     description: destination.description,
-//     image: destination.image,
-//     touristType: "Travelers",
-//     url: `https://www.indiatripguide.com/destinations/${destination.slug}`,
-//   };
-
-//   const destinationBlogMap: Record<string, string> = {
-//     udaipur: "best-time-to-visit-udaipur",
-//     goa: "budget-goa-trip-guide",
-//     jaipur: "best-time-to-visit-jaipur",
-//     manali: "best-time-to-visit-manali",
-//     rishikesh: "best-time-to-visit-rishikesh",
-//     kerala: "best-time-to-visit-kerala",
-//     jaisalmer: "best-time-to-visit-jaisalmer",
-//     shimla: "complete-shimla-travel-guide",
-//     darjeeling: "top-hill-stations-in-india",
-//     "mount-abu": "top-hill-stations-in-india",
-//     andaman: "best-time-to-visit-andaman",
-//     mumbai: "best-time-to-visit-mumbai",
-//     pondicherry: "best-time-to-visit-pondicherry",
-//     munnar: "best-time-to-visit-munnar",
-//     "gujarat-spiritual-coastal-journey": "gujarat-road-trip-travel-guide",
-//     kashmir: "best-time-to-visit-kashmir",
-//     mussoorie: "best-time-to-visit-mussoorie",
-//     jodhpur: "rajasthan-road-trip-guide",
-//     varanasi: "complete-varanasi-travel-guide",
-//     agra: "complete-agra-travel-guide",
-//   };
-
-//   const relatedItineraries = itineraries.filter(
-//     (item) =>
-//       item.destination.toLowerCase() === destination.name.toLowerCase() ||
-//       item.title.toLowerCase().includes(destination.name.toLowerCase())
-//   );
-
-//   const relatedDestinations = getRelatedDestinations(destination);
-
-//   const relatedBlog = blogs.find(
-//     (blog) => blog.slug === destinationBlogMap[destination.slug]
-//   );
-
-//   return (
-//     <main className="bg-white">
-//       <script
-//         type="application/ld+json"
-//         dangerouslySetInnerHTML={{
-//           __html: JSON.stringify(jsonLd),
-//         }}
-//       />
-
-//       <section className="relative min-h-[560px] overflow-hidden bg-zinc-950 text-white md:min-h-[680px]">
-//         <Image
-//           src={destination.image}
-//           alt={destination.name}
-//           fill
-//           priority
-//           className="object-cover opacity-65"
-//         />
-
-//         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-zinc-950/10" />
-//         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-
-//         <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-end px-6 pb-12 pt-24 md:min-h-[680px] md:pb-16">
-//           <div className="max-w-4xl">
-//             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-orange-200 backdrop-blur-xl">
-//               <MapPin size={16} />
-//               {destination.tagline}
-//             </p>
-
-//             <h1 className="text-5xl font-black leading-tight tracking-tight md:text-7xl">
-//               {destination.name}
-//             </h1>
-
-//             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-100 md:text-lg md:leading-8">
-//               {destination.description}
-//             </p>
-
-//             <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
-//               <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl">
-//                 <CalendarDays className="mb-2 text-orange-300" size={20} />
-//                 <p className="text-xs font-semibold uppercase tracking-wide text-zinc-300">
-//                   Best Time
-//                 </p>
-//                 <p className="mt-1 font-black text-white">
-//                   {destination.bestTime}
-//                 </p>
-//               </div>
-
-//               <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl">
-//                 <Wallet className="mb-2 text-orange-300" size={20} />
-//                 <p className="text-xs font-semibold uppercase tracking-wide text-zinc-300">
-//                   Budget
-//                 </p>
-//                 <p className="mt-1 font-black text-white">
-//                   {destination.budget}
-//                 </p>
-//               </div>
-
-//               <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl">
-//                 <Sparkles className="mb-2 text-orange-300" size={20} />
-//                 <p className="text-xs font-semibold uppercase tracking-wide text-zinc-300">
-//                   Duration
-//                 </p>
-//                 <p className="mt-1 font-black text-white">
-//                   {destination.duration}
-//                 </p>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1fr_360px] lg:py-20">
-//         <div className="lg:col-span-2">
-//           <Breadcrumbs
-//             items={[
-//               { label: "Home", href: "/" },
-//               { label: "Destinations", href: "/destinations" },
-//               { label: destination.name },
-//             ]}
-//           />
-//         </div>
-
-//         <div>
-//           <section>
-//             <div className="mb-6 flex items-center gap-3">
-//               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-//                 <MapPin size={24} />
-//               </div>
-
-//               <div>
-//                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-//                   Highlights
-//                 </p>
-//                 <h2 className="text-3xl font-black text-zinc-950">
-//                   Top places to visit in {destination.name}
-//                 </h2>
-//               </div>
-//             </div>
-
-//             <div className="grid gap-4 sm:grid-cols-2">
-//               {destination.highlights.map((place) => (
-//                 <div
-//                   key={place}
-//                   className="group rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl"
-//                 >
-//                   <CheckCircle2 className="mb-4 text-orange-500" size={22} />
-//                   <p className="font-black text-zinc-900">{place}</p>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-
-//           <section className="mt-16">
-//             <div className="mb-6 flex items-center gap-3">
-//               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-//                 <Sparkles size={24} />
-//               </div>
-
-//               <div>
-//                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-//                   Experiences
-//                 </p>
-//                 <h2 className="text-3xl font-black text-zinc-950">
-//                   Things to do
-//                 </h2>
-//               </div>
-//             </div>
-
-//             <div className="space-y-4">
-//               {destination.thingsToDo.map((item) => (
-//                 <div
-//                   key={item}
-//                   className="flex gap-4 rounded-3xl border border-zinc-200 bg-zinc-50 p-5"
-//                 >
-//                   <CheckCircle2
-//                     size={20}
-//                     className="mt-0.5 shrink-0 text-orange-500"
-//                   />
-//                   <p className="font-medium leading-7 text-zinc-700">{item}</p>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-
-//           <section className="mt-16">
-//             <div className="mb-6 flex items-center gap-3">
-//               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-//                 <Lightbulb size={24} />
-//               </div>
-
-//               <div>
-//                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-//                   Smart Advice
-//                 </p>
-//                 <h2 className="text-3xl font-black text-zinc-950">
-//                   Travel tips
-//                 </h2>
-//               </div>
-//             </div>
-
-//             <div className="grid gap-4 sm:grid-cols-2">
-//               {destination.travelTips.map((tip) => (
-//                 <div
-//                   key={tip}
-//                   className="rounded-3xl border border-orange-100 bg-orange-50 p-5 text-zinc-800"
-//                 >
-//                   <p className="font-semibold leading-7">{tip}</p>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-
-//           {relatedItineraries.length > 0 && (
-//             <section className="mt-16">
-//               <div className="mb-6">
-//                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-//                   Trip Plans
-//                 </p>
-//                 <h2 className="mt-2 text-3xl font-black text-zinc-950">
-//                   Related itineraries
-//                 </h2>
-//               </div>
-
-//               <div className="grid gap-6">
-//                 {relatedItineraries.map((itinerary) => (
-//                   <ItineraryCard key={itinerary.slug} itinerary={itinerary} />
-//                 ))}
-//               </div>
-//             </section>
-//           )}
-
-//           {relatedDestinations.length > 0 && (
-//             <section className="mt-16">
-//               <div className="mb-6">
-//                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-//                   Explore More
-//                 </p>
-
-//                 <h2 className="mt-2 text-3xl font-black text-zinc-950">
-//                   Related destinations
-//                 </h2>
-
-//                 <p className="mt-3 max-w-2xl text-zinc-600">
-//                   Discover more places similar to {destination.name} and plan a
-//                   better India trip.
-//                 </p>
-//               </div>
-
-//               <div className="grid gap-6 md:grid-cols-3">
-//                 {relatedDestinations.map((item) => (
-//                   <DestinationCard key={item.slug} destination={item} />
-//                 ))}
-//               </div>
-//             </section>
-//           )}
-
-//           {relatedBlog && (
-//             <section className="mt-16">
-//               <div className="mb-6">
-//                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-//                   Travel Guide
-//                 </p>
-//                 <h2 className="mt-2 text-3xl font-black text-zinc-950">
-//                   Related guide
-//                 </h2>
-//               </div>
-
-//               <Link
-//                 href={`/blog/${relatedBlog.slug}`}
-//                 className="group block rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6 transition hover:-translate-y-1 hover:border-orange-200 hover:bg-orange-50 hover:shadow-xl"
-//               >
-//                 <h3 className="text-2xl font-black text-zinc-950">
-//                   {relatedBlog.title}
-//                 </h3>
-
-//                 <p className="mt-3 leading-7 text-zinc-600">
-//                   {relatedBlog.description}
-//                 </p>
-
-//                 <span className="mt-5 inline-flex items-center gap-2 font-black text-orange-600">
-//                   Read Guide
-//                   <ArrowRight
-//                     size={17}
-//                     className="transition group-hover:translate-x-1"
-//                   />
-//                 </span>
-//               </Link>
-//             </section>
-//           )}
-
-//           <section className="mt-16">
-//             <div className="mb-6 flex items-center gap-3">
-//               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-//                 <HelpCircle size={24} />
-//               </div>
-
-//               <div>
-//                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-//                   Questions
-//                 </p>
-//                 <h2 className="text-3xl font-black text-zinc-950">FAQs</h2>
-//               </div>
-//             </div>
-
-//             <div className="space-y-4">
-//               {destination.faqs.map((faq) => (
-//                 <div
-//                   key={faq.question}
-//                   className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm"
-//                 >
-//                   <h3 className="text-lg font-black text-zinc-950">
-//                     {faq.question}
-//                   </h3>
-//                   <p className="mt-2 leading-7 text-zinc-600">{faq.answer}</p>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-//         </div>
-
-//         <aside className="h-fit rounded-[2rem] border border-zinc-200 bg-zinc-950 p-6 text-white shadow-2xl lg:sticky lg:top-28">
-//           <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-300">
-//             Plan your trip
-//           </p>
-
-//           <h3 className="mt-3 text-2xl font-black">
-//             Start planning {destination.name}
-//           </h3>
-
-//           <p className="mt-3 text-sm leading-6 text-zinc-300">
-//             Compare stays, flights, and travel packages for this destination.
-//           </p>
-
-//           <div className="mt-6 space-y-3">
-//             <Link
-//               href={`/trip-planner?destination=${encodeURIComponent(
-//                 destination.name
-//               )}&days=${parseInt(destination.duration)}`}
-//               className="block rounded-full bg-orange-500 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-orange-600"
-//             >
-//               Plan Trip
-//             </Link>
-
-//             {/* <Link
-//               href="/contact"
-//               className="block rounded-full border border-white/15 bg-white/10 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white/15"
-//             >
-//               Book Hotels
-//             </Link>
-
-//             <Link
-//               href="/contact"
-//               className="block rounded-full border border-white/15 bg-white/10 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white/15"
-//             >
-//               Find Flights
-//             </Link> 
-
-//             <Link
-//               href="/contact"
-//               className="block rounded-full border border-white/15 bg-white/10 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white/15"
-//             >
-//               Explore Packages
-//             </Link> */}
-//           </div>
-//         </aside>
-//       </section>
-//     </main>
-//   );
-// }
-
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowRight,
-  CalendarDays,
-  CheckCircle2,
-  HelpCircle,
-  Lightbulb,
-  MapPin,
-  Sparkles,
-  Wallet,
-  Plane,
-  Train,
-  Car,
-  Utensils,
-  Hotel,
-  IndianRupee,
-  Clock,
-} from "lucide-react";
-
-import DestinationCard from "@/components/cards/DestinationCard";
-import ItineraryCard from "@/components/cards/ItineraryCard";
 import { destinations } from "@/data/destinations";
 import { itineraries } from "@/data/itineraries";
 import { blogs } from "@/data/blogs";
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import type { Destination } from "@/types";
 
 type PageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+const siteUrl = "https://www.indiatripguide.com";
+
+function getDestination(slug: string): Destination | undefined {
+  return destinations.find((destination) => destination.slug === slug);
+}
+
+function normalize(value: string) {
+  return value.toLowerCase().replace(/&/g, "and").replace(/\s+/g, "-");
+}
+
+function getRelatedItinerary(destination: Destination) {
+  const destinationName = destination.name.toLowerCase();
+  const destinationSlug = normalize(destination.name);
+
+  return itineraries.find((itinerary) => {
+    const title = itinerary.title.toLowerCase();
+    const itineraryDestination = itinerary.destination.toLowerCase();
+
+    return (
+      itineraryDestination === destinationName ||
+      title.includes(destinationName) ||
+      itinerary.slug.includes(destination.slug) ||
+      itinerary.slug.includes(destinationSlug)
+    );
+  });
+}
+
+function getRelatedBlog(destination: Destination) {
+  const destinationName = destination.name.toLowerCase();
+  const destinationSlug = normalize(destination.name);
+
+  return blogs.find((blog) => {
+    const title = blog.title.toLowerCase();
+    const description = blog.description.toLowerCase();
+
+    return (
+      title.includes(destinationName) ||
+      description.includes(destinationName) ||
+      blog.slug.includes(destination.slug) ||
+      blog.slug.includes(destinationSlug)
+    );
+  });
+}
+
+function getRelatedDestinations(destination: Destination) {
+  const tagMatches = destinations
+    .filter((item) => item.slug !== destination.slug)
+    .map((item) => ({
+      destination: item,
+      score: item.tags.filter((tag) => destination.tags.includes(tag)).length,
+    }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((item) => item.destination);
+
+  return tagMatches.slice(0, 3);
+}
+
+function SectionHeading({
+  eyebrow,
+  title,
+  description,
+  align = "left",
+}: {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+}) {
+  return (
+    <div className={align === "center" ? "mx-auto mb-10 max-w-3xl text-center" : "mb-8"}>
+      {eyebrow ? (
+        <p className="mb-3 text-xs font-black uppercase tracking-[0.28em] text-orange-600">
+          {eyebrow}
+        </p>
+      ) : null}
+
+      <h2 className="text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+        {title}
+      </h2>
+
+      {description ? (
+        <p className="mt-4 text-base leading-8 text-slate-600">
+          {description}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function StatCard({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: string;
+  icon: string;
+}) {
+  return (
+    <div className="group relative overflow-hidden rounded-[1.6rem] border border-white/70 bg-white p-6 shadow-[0_24px_70px_-35px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_-35px_rgba(15,23,42,0.55)]">
+      <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-orange-100 transition duration-300 group-hover:scale-125" />
+      <div className="relative">
+        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-xl text-white">
+          {icon}
+        </div>
+        <p className="text-sm font-bold uppercase tracking-[0.18em] text-slate-500">
+          {label}
+        </p>
+        <p className="mt-2 text-xl font-black text-slate-950">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+function SectionTitle({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+}) {
+  return (
+    <div className="mb-8">
+      {eyebrow ? (
+        <p className="mb-3 text-xs font-black uppercase tracking-[0.28em] text-orange-600">
+          {eyebrow}
+        </p>
+      ) : null}
+
+      <h2 className="text-3xl font-black tracking-tight text-zinc-950 md:text-4xl">
+        {title}
+      </h2>
+
+      {description ? (
+        <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-600">
+          {description}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function PremiumCard({
+  title,
+  text,
+  icon,
+}: {
+  title: string;
+  text: string;
+  icon?: string;
+}) {
+  return (
+    <article className="rounded-[1.6rem] border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl">
+      {icon ? (
+        <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-50 text-xl">
+          {icon}
+        </div>
+      ) : null}
+      <h3 className="text-lg font-black text-slate-950">{title}</h3>
+      <p className="mt-3 text-sm leading-7 text-slate-600">{text}</p>
+    </article>
+  );
+}
+
+function PremiumCardNew({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`rounded-[2rem] border border-zinc-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)] ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function NumberedGrid({
+  items,
+  columns = "md:grid-cols-2 lg:grid-cols-3",
+}: {
+  items: string[];
+  columns?: string;
+}) {
+  return (
+    <div className={`grid gap-4 ${columns}`}>
+      {items.map((item, index) => (
+        <div
+          key={`${item}-${index}`}
+          className="group rounded-[1.35rem] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
+        >
+          <div className="flex gap-4">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-50 text-sm font-black text-orange-600 group-hover:bg-orange-600 group-hover:text-white">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <p className="text-sm font-semibold leading-7 text-slate-700">
+              {item}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PillList({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-3">
+      {items.map((item) => (
+        <span
+          key={item}
+          className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export function generateStaticParams() {
   return destinations.map((destination) => ({
@@ -673,770 +246,671 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const destination = destinations.find((item) => item.slug === slug);
+  const destination = getDestination(slug);
 
   if (!destination) {
     return {
-      title: "Destination Not Found",
+      title: "Destination Not Found - IndiaTripGuide",
     };
   }
 
   return {
-    title: `${destination.name} Travel Guide | IndiaTripGuide`,
+    title: `${destination.name} Travel Guide - Places, Cost, Food & Tips`,
     description: destination.description,
+    alternates: {
+      canonical: `${siteUrl}/destinations/${destination.slug}`,
+    },
+    openGraph: {
+      title: `${destination.name} Travel Guide - IndiaTripGuide`,
+      description: destination.description,
+      url: `${siteUrl}/destinations/${destination.slug}`,
+      siteName: "IndiaTripGuide",
+      images: [
+        {
+          url: destination.image,
+          width: 1200,
+          height: 630,
+          alt: `${destination.name} travel guide`,
+        },
+      ],
+      locale: "en_IN",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${destination.name} Travel Guide - IndiaTripGuide`,
+      description: destination.description,
+      images: [destination.image],
+    },
   };
-}
-
-// function getRelatedDestinations(currentDestination: (typeof destinations)[number]) {
-//   const stopWords = new Set([
-//     "the",
-//     "and",
-//     "for",
-//     "with",
-//     "from",
-//     "this",
-//     "that",
-//     "your",
-//     "you",
-//     "are",
-//     "is",
-//     "in",
-//     "of",
-//     "to",
-//     "a",
-//     "an",
-//     "trip",
-//     "travel",
-//     "india",
-//     "destination",
-//   ]);
-
-//   const getWords = (text: string) =>
-//     text
-//       .toLowerCase()
-//       .replace(/[^a-z0-9\s]/g, " ")
-//       .split(/\s+/)
-//       .filter((word) => word.length > 3 && !stopWords.has(word));
-
-//   const currentText = [
-//     currentDestination.name,
-//     currentDestination.tagline,
-//     currentDestination.description,
-//     currentDestination.bestTime,
-//     currentDestination.budget,
-//     currentDestination.duration,
-//     currentDestination.highlights.join(" "),
-//     currentDestination.thingsToDo.join(" "),
-//     currentDestination.travelTips.join(" "),
-//   ].join(" ");
-
-//   const currentWords = new Set(getWords(currentText));
-
-//   const scored = destinations
-//     .filter((item) => item.slug !== currentDestination.slug)
-//     .map((item) => {
-//       const itemText = [
-//         item.name,
-//         item.tagline,
-//         item.description,
-//         item.bestTime,
-//         item.budget,
-//         item.duration,
-//         item.highlights.join(" "),
-//         item.thingsToDo.join(" "),
-//         item.travelTips.join(" "),
-//       ].join(" ");
-
-//       const itemWords = getWords(itemText);
-
-//       let score = 0;
-
-//       itemWords.forEach((word) => {
-//         if (currentWords.has(word)) {
-//           score += 1;
-//         }
-//       });
-
-//       if (
-//         item.tagline.toLowerCase() ===
-//         currentDestination.tagline.toLowerCase()
-//       ) {
-//         score += 5;
-//       }
-
-//       return {
-//         destination: item,
-//         score,
-//       };
-//     })
-//     .sort((a, b) => b.score - a.score);
-
-//   const bestMatches = scored
-//     .filter((item) => item.score > 0)
-//     .slice(0, 3)
-//     .map((item) => item.destination);
-
-//   if (bestMatches.length >= 3) {
-//     return bestMatches;
-//   }
-
-//   const fallback = destinations
-//     .filter(
-//       (item) =>
-//         item.slug !== currentDestination.slug &&
-//         !bestMatches.some((match) => match.slug === item.slug)
-//     )
-//     .slice(0, 3 - bestMatches.length);
-
-//   return [...bestMatches, ...fallback];
-// }
-
-function getRelatedDestinations(currentDestination: (typeof destinations)[number]) {
-  const currentTags = new Set(
-    (currentDestination.tags ?? []).map((tag) => tag.toLowerCase())
-  );
-
-  const currentText = [
-    currentDestination.name,
-    currentDestination.tagline,
-    currentDestination.description,
-    currentDestination.highlights.join(" "),
-    currentDestination.thingsToDo.join(" "),
-  ]
-    .join(" ")
-    .toLowerCase();
-
-  const getCategoryBoost = (item: (typeof destinations)[number]) => {
-    const itemText = [
-      item.name,
-      item.tagline,
-      item.description,
-      item.highlights.join(" "),
-      item.thingsToDo.join(" "),
-    ]
-      .join(" ")
-      .toLowerCase();
-
-    let score = 0;
-
-    const coastalWords = ["beach", "coast", "coastal", "sea", "island"];
-    const hillWords = ["hill", "mountain", "valley", "peak", "tea"];
-    const spiritualWords = ["temple", "spiritual", "pilgrimage", "jyotirlinga"];
-    const wildlifeWords = ["wildlife", "national park", "safari", "forest"];
-    const heritageWords = ["fort", "palace", "heritage", "monument"];
-
-    const hasAny = (text: string, words: string[]) =>
-      words.some((word) => text.includes(word));
-
-    if (hasAny(currentText, coastalWords) && hasAny(itemText, coastalWords)) {
-      score += 8;
-    }
-
-    if (hasAny(currentText, hillWords) && hasAny(itemText, hillWords)) {
-      score += 8;
-    }
-
-    if (
-      hasAny(currentText, spiritualWords) &&
-      hasAny(itemText, spiritualWords)
-    ) {
-      score += 8;
-    }
-
-    if (hasAny(currentText, wildlifeWords) && hasAny(itemText, wildlifeWords)) {
-      score += 8;
-    }
-
-    if (hasAny(currentText, heritageWords) && hasAny(itemText, heritageWords)) {
-      score += 5;
-    }
-
-    return score;
-  };
-
-  const scored = destinations
-    .filter((item) => item.slug !== currentDestination.slug)
-    .map((item) => {
-      let score = 0;
-
-      const itemTags = (item.tags ?? []).map((tag) => tag.toLowerCase());
-
-      itemTags.forEach((tag) => {
-        if (currentTags.has(tag)) {
-          score += 10;
-        }
-      });
-
-      score += getCategoryBoost(item);
-
-      if (item.bestTime === currentDestination.bestTime) {
-        score += 1;
-      }
-
-      if (item.duration === currentDestination.duration) {
-        score += 1;
-      }
-
-      return {
-        destination: item,
-        score,
-      };
-    })
-    .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score);
-
-  return scored.slice(0, 3).map((item) => item.destination);
 }
 
 export default async function DestinationDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const destination = destinations.find((item) => item.slug === slug);
+  const destination = getDestination(slug);
 
   if (!destination) {
     notFound();
   }
 
-  const jsonLd = {
+  const relatedItinerary = getRelatedItinerary(destination);
+  const relatedBlog = getRelatedBlog(destination);
+  const relatedDestinations = getRelatedDestinations(destination);
+
+  const destinationImage = destination.image.startsWith("http")
+    ? destination.image
+    : `${siteUrl}${destination.image}`;
+
+  const destinationJsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristDestination",
     name: destination.name,
     description: destination.description,
-    image: destination.image,
-    touristType: "Travelers",
-    url: `https://www.indiatripguide.com/destinations/${destination.slug}`,
+    image: destinationImage,
+    url: `${siteUrl}/destinations/${destination.slug}`,
+    touristType: destination.tags,
   };
 
-  const destinationBlogMap: Record<string, string> = {
-    udaipur: "best-time-to-visit-udaipur",
-    goa: "budget-goa-trip-guide",
-    jaipur: "best-time-to-visit-jaipur",
-    manali: "best-time-to-visit-manali",
-    rishikesh: "best-time-to-visit-rishikesh",
-    kerala: "best-time-to-visit-kerala",
-    jaisalmer: "best-time-to-visit-jaisalmer",
-    shimla: "complete-shimla-travel-guide",
-    darjeeling: "top-hill-stations-in-india",
-    "mount-abu": "top-hill-stations-in-india",
-    andaman: "best-time-to-visit-andaman",
-    mumbai: "best-time-to-visit-mumbai",
-    pondicherry: "best-time-to-visit-pondicherry",
-    munnar: "best-time-to-visit-munnar",
-    "gujarat-spiritual-coastal-journey": "gujarat-road-trip-travel-guide",
-    kashmir: "best-time-to-visit-kashmir",
-    mussoorie: "best-time-to-visit-mussoorie",
-    jodhpur: "rajasthan-road-trip-guide",
-    varanasi: "complete-varanasi-travel-guide",
-    agra: "complete-agra-travel-guide",
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: destination.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
-
-  const relatedItineraries = itineraries.filter(
-    (item) =>
-      item.destination.toLowerCase() === destination.name.toLowerCase() ||
-      item.title.toLowerCase().includes(destination.name.toLowerCase())
-  );
-
-  const relatedDestinations = getRelatedDestinations(destination);
-
-  const relatedBlog = blogs.find(
-    (blog) => blog.slug === destinationBlogMap[destination.slug]
-  );
 
   return (
-    <main className="bg-white">
+    <main className="bg-[#f8fafc] text-slate-950">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="relative min-h-[560px] overflow-hidden bg-zinc-950 text-white md:min-h-[680px]">
-        <Image
-          src={destination.image}
-          alt={destination.name}
-          fill
-          priority
-          className="object-cover opacity-65"
-        />
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={destination.image}
+            alt={`${destination.name} travel guide`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.92)_0%,rgba(2,6,23,0.72)_38%,rgba(2,6,23,0.35)_72%,rgba(2,6,23,0.58)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f8fafc] via-[#f8fafc]/65 to-transparent" />
+        </div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-zinc-950/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
+        <div className="relative mx-auto max-w-7xl px-4 pb-28 pt-20 sm:px-6 md:pt-24 lg:px-8 lg:pb-32">
+          <nav className="mb-12 flex flex-wrap items-center gap-2 text-sm font-semibold text-white/80">
+            <Link href="/" className="transition hover:text-white">
+              Home
+            </Link>
+            <span>/</span>
+            <Link href="/destinations" className="transition hover:text-white">
+              Destinations
+            </Link>
+            <span>/</span>
+            <span className="text-white">{destination.name}</span>
+          </nav>
 
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-end px-6 pb-12 pt-24 md:min-h-[680px] md:pb-16">
           <div className="max-w-4xl">
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-orange-200 backdrop-blur-xl">
-              <MapPin size={16} />
+            <p className="mb-4 text-base font-black uppercase tracking-[0.22em] text-orange-300">
               {destination.tagline}
             </p>
 
-            <h1 className="text-5xl font-black leading-tight tracking-tight md:text-7xl">
-              {destination.name}
+            <h1 className="max-w-5xl text-5xl font-black tracking-tight text-white drop-shadow-2xl md:text-7xl">
+              {destination.name} Travel Guide
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-100 md:text-lg md:leading-8">
+            <p className="mt-7 max-w-3xl text-lg font-medium leading-9 text-white/90 md:text-xl">
               {destination.description}
             </p>
 
-            <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl">
-                <CalendarDays className="mb-2 text-orange-300" size={20} />
-                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-300">
-                  Best Time
-                </p>
-                <p className="mt-1 font-black text-white">
-                  {destination.bestTime}
-                </p>
-              </div>
+            <div className="mt-9 flex flex-wrap gap-4">
+              {relatedItinerary ? (
+                <Link
+                  href={`/itineraries/${relatedItinerary.slug}`}
+                  className="rounded-full bg-orange-500 px-7 py-4 text-sm font-black text-white shadow-[0_18px_45px_-20px_rgba(249,115,22,0.9)] transition hover:-translate-y-0.5 hover:bg-orange-600"
+                >
+                  View Itinerary
+                </Link>
+              ) : (
+                <Link
+                  href="/itineraries"
+                  className="rounded-full bg-orange-500 px-7 py-4 text-sm font-black text-white shadow-[0_18px_45px_-20px_rgba(249,115,22,0.9)] transition hover:-translate-y-0.5 hover:bg-orange-600"
+                >
+                  Explore Itineraries
+                </Link>
+              )}
 
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl">
-                <Wallet className="mb-2 text-orange-300" size={20} />
-                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-300">
-                  Budget
-                </p>
-                <p className="mt-1 font-black text-white">
-                  {destination.budget}
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-xl">
-                <Sparkles className="mb-2 text-orange-300" size={20} />
-                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-300">
-                  Duration
-                </p>
-                <p className="mt-1 font-black text-white">
-                  {destination.duration}
-                </p>
-              </div>
+              <a
+                href="#guide"
+                className="rounded-full border border-white/20 bg-white px-7 py-4 text-sm font-black text-slate-950 shadow-xl transition hover:-translate-y-0.5 hover:bg-slate-100"
+              >
+                Read Full Guide
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1fr_360px] lg:py-20">
-        <div className="lg:col-span-2">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Destinations", href: "/destinations" },
-              { label: destination.name },
-            ]}
-          />
+      <section className="relative z-20 mx-auto -mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-5 md:grid-cols-3">
+          <StatCard label="Best Time" value={destination.bestTime} icon="☀️" />
+          <StatCard label="Budget" value={destination.budget} icon="₹" />
+          <StatCard label="Duration" value={destination.duration} icon="🧭" />
         </div>
+      </section>
 
-        <div>
-          <section>
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <MapPin size={24} />
+      <section id="guide" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_350px]">
+          <div className="space-y-12">
+            <section className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_28px_80px_-55px_rgba(15,23,42,0.55)]">
+              <div className="border-b border-slate-100 bg-gradient-to-r from-orange-50 via-white to-slate-50 p-7 md:p-9">
+                <SectionHeading
+                  eyebrow="About"
+                  title={`Why visit ${destination.name}?`}
+                  description="A rich travel overview to help you understand the destination, its travel style, and the best way to experience it."
+                />
               </div>
 
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Highlights
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  Top places to visit in {destination.name}
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {destination.highlights.map((place) => (
-                <div
-                  key={place}
-                  className="group rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl"
-                >
-                  <CheckCircle2 className="mb-4 text-orange-500" size={22} />
-                  <p className="font-black text-zinc-900">{place}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <Sparkles size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Experiences
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  Things to do
-                </h2>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {destination.thingsToDo.map((item) => (
-                <div
-                  key={item}
-                  className="flex gap-4 rounded-3xl border border-zinc-200 bg-zinc-50 p-5"
-                >
-                  <CheckCircle2
-                    size={20}
-                    className="mt-0.5 shrink-0 text-orange-500"
-                  />
-                  <p className="font-medium leading-7 text-zinc-700">{item}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <Lightbulb size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Smart Advice
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  Travel tips
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {destination.travelTips.map((tip) => (
-                <div
-                  key={tip}
-                  className="rounded-3xl border border-orange-100 bg-orange-50 p-5 text-zinc-800"
-                >
-                  <p className="font-semibold leading-7">{tip}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <Car size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Travel Access
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  How to reach {destination.name}
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
-                <Plane className="mb-4 text-orange-500" size={24} />
-                <h3 className="font-black text-zinc-950">By Air</h3>
-                <p className="mt-2 leading-7 text-zinc-600">{destination.howToReach.byAir}</p>
-              </div>
-
-              <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
-                <Car className="mb-4 text-orange-500" size={24} />
-                <h3 className="font-black text-zinc-950">By Road</h3>
-                <p className="mt-2 leading-7 text-zinc-600">{destination.howToReach.byRoad}</p>
-              </div>
-
-              <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
-                <Train className="mb-4 text-orange-500" size={24} />
-                <h3 className="font-black text-zinc-950">By Train</h3>
-                <p className="mt-2 leading-7 text-zinc-600">{destination.howToReach.byTrain}</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <Utensils size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Local Taste
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  Local food to try
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {destination.localFood.map((food) => (
-                <div
-                  key={food}
-                  className="rounded-3xl border border-zinc-200 bg-zinc-50 p-5"
-                >
-                  <p className="font-black text-zinc-900">{food}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <MapPin size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Nearby
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  Nearby places to visit
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {destination.nearbyPlaces.map((place) => (
-                <div
-                  key={place}
-                  className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm"
-                >
-                  <p className="font-black text-zinc-900">{place}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <Hotel size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Stay Guide
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  Where to stay in {destination.name}
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
-                <h3 className="font-black text-zinc-950">Budget</h3>
-                <p className="mt-2 leading-7 text-zinc-600">{destination.whereToStay.budget}</p>
-              </div>
-
-              <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
-                <h3 className="font-black text-zinc-950">Mid-range</h3>
-                <p className="mt-2 leading-7 text-zinc-600">{destination.whereToStay.midRange}</p>
-              </div>
-
-              <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
-                <h3 className="font-black text-zinc-950">Luxury</h3>
-                <p className="mt-2 leading-7 text-zinc-600">{destination.whereToStay.luxury}</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <IndianRupee size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Trip Cost
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">
-                  Budget breakdown
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-3xl border border-orange-100 bg-orange-50 p-5">
-                <h3 className="font-black text-zinc-950">Backpacker</h3>
-                <p className="mt-2 font-bold text-zinc-700">{destination.budgetBreakdown.backpacker}</p>
-              </div>
-
-              <div className="rounded-3xl border border-orange-100 bg-orange-50 p-5">
-                <h3 className="font-black text-zinc-950">Mid-range</h3>
-                <p className="mt-2 font-bold text-zinc-700">{destination.budgetBreakdown.midRange}</p>
-              </div>
-
-              <div className="rounded-3xl border border-orange-100 bg-orange-50 p-5">
-                <h3 className="font-black text-zinc-950">Luxury</h3>
-                <p className="mt-2 font-bold text-zinc-700">{destination.budgetBreakdown.luxury}</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="mt-16 rounded-[2rem] border border-zinc-200 bg-zinc-950 p-6 text-white">
-            <div className="mb-4 flex items-center gap-3">
-              <Clock className="text-orange-300" size={24} />
-              <h2 className="text-3xl font-black">Ideal duration</h2>
-            </div>
-
-            <p className="leading-8 text-zinc-300">{destination.idealDuration}</p>
-          </section>
-
-          {relatedItineraries.length > 0 && (
-            <section className="mt-16">
-              <div className="mb-6">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Trip Plans
-                </p>
-                <h2 className="mt-2 text-3xl font-black text-zinc-950">
-                  Related itineraries
-                </h2>
-              </div>
-
-              <div className="grid gap-6">
-                {relatedItineraries.map((itinerary) => (
-                  <ItineraryCard key={itinerary.slug} itinerary={itinerary} />
+              <div className="space-y-6 p-7 md:p-9">
+                {destination.overview.map((paragraph, index) => (
+                  <p
+                    key={`${destination.slug}-overview-${index}`}
+                    className="text-base leading-9 text-slate-700"
+                  >
+                    {paragraph}
+                  </p>
                 ))}
               </div>
             </section>
-          )}
 
-          {relatedDestinations.length > 0 && (
-            <section className="mt-16">
-              <div className="mb-6">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Explore More
-                </p>
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Season Guide"
+                title={`Best time to visit ${destination.name}`}
+                description="Understand how the destination feels across seasons before choosing your travel dates."
+              />
 
-                <h2 className="mt-2 text-3xl font-black text-zinc-950">
-                  Related destinations
-                </h2>
-
-                <p className="mt-3 max-w-2xl text-zinc-600">
-                  Discover more places similar to {destination.name} and plan a
-                  better India trip.
-                </p>
+              <div className="grid gap-5 md:grid-cols-2">
+                <PremiumCard
+                  icon="⭐"
+                  title="Recommended Season"
+                  text={destination.bestTimeToVisit.recommendedSeason}
+                />
+                <PremiumCard
+                  icon="❄️"
+                  title="Winter"
+                  text={destination.bestTimeToVisit.winter}
+                />
+                <PremiumCard
+                  icon="🌤️"
+                  title="Summer"
+                  text={destination.bestTimeToVisit.summer}
+                />
+                <PremiumCard
+                  icon="🌧️"
+                  title="Monsoon"
+                  text={destination.bestTimeToVisit.monsoon}
+                />
               </div>
+            </section>
 
-              <div className="grid gap-6 md:grid-cols-3">
-                {relatedDestinations.map((item) => (
-                  <DestinationCard key={item.slug} destination={item} />
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Attractions"
+                title={`Must-visit places in ${destination.name}`}
+                description="The most important places, viewpoints, temples, beaches, markets, landmarks, and nearby attractions to include in your plan."
+              />
+
+              <NumberedGrid items={destination.mustVisitPlaces} />
+            </section>
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Experiences"
+                title={`Things to do in ${destination.name}`}
+                description="Use these ideas to create a deeper and more useful travel itinerary."
+              />
+
+              <NumberedGrid items={destination.thingsToDo} columns="md:grid-cols-2" />
+            </section>
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Food"
+                title={`Local food to try in ${destination.name}`}
+                description="Regional dishes, snacks, drinks, desserts, and food experiences worth trying."
+              />
+
+              <PillList items={destination.localFood} />
+            </section>
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Transport"
+                title={`How to reach ${destination.name}`}
+              />
+
+              <div className="grid gap-5">
+                <PremiumCard icon="✈️" title="By Air" text={destination.howToReach.byAir} />
+                <PremiumCard icon="🚗" title="By Road" text={destination.howToReach.byRoad} />
+                <PremiumCard icon="🚆" title="By Train" text={destination.howToReach.byTrain} />
+              </div>
+            </section>
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Stay"
+                title={`Where to stay in ${destination.name}`}
+                description="Choose your stay area and accommodation style based on comfort, budget, and itinerary."
+              />
+
+              <div className="grid gap-5 md:grid-cols-3">
+                <PremiumCard
+                  icon="🎒"
+                  title="Budget"
+                  text={destination.whereToStay.budget}
+                />
+                <PremiumCard
+                  icon="🏨"
+                  title="Mid-range"
+                  text={destination.whereToStay.midRange}
+                />
+                <PremiumCard
+                  icon="✨"
+                  title="Luxury"
+                  text={destination.whereToStay.luxury}
+                />
+              </div>
+            </section>
+
+            {/* <section className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-[0_28px_80px_-55px_rgba(15,23,42,0.55)] md:p-9">
+              <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-orange-100/70 blur-3xl" />
+              <div className="absolute -bottom-28 -left-24 h-64 w-64 rounded-full bg-slate-200/70 blur-3xl" />
+
+              <div className="relative">
+                <SectionHeading
+                  eyebrow="Trip Cost"
+                  title={`${destination.name} budget breakdown`}
+                  description="Destination-specific spending guidance for different travel styles."
+                />
+
+                <div className="grid gap-5">
+                  <article className="rounded-[1.6rem] border border-orange-100 bg-gradient-to-br from-orange-50 via-white to-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500 text-xl text-white">
+                      🎒
+                    </div>
+                    <h3 className="text-xl font-black text-slate-950">Backpacker</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-700">
+                      {destination.budgetBreakdown.backpacker}
+                    </p>
+                  </article>
+
+                  <article className="rounded-[1.6rem] border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-xl text-white">
+                      🏨
+                    </div>
+                    <h3 className="text-xl font-black text-slate-950">Mid-range</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-700">
+                      {destination.budgetBreakdown.midRange}
+                    </p>
+                  </article>
+
+                  <article className="rounded-[1.6rem] border border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500 text-xl text-white">
+                      ✨
+                    </div>
+                    <h3 className="text-xl font-black text-white">Luxury</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-300">
+                      {destination.budgetBreakdown.luxury}
+                    </p>
+                  </article>
+                </div>
+              </div>              
+
+            </section> */}
+
+            {/* <section className="relative overflow-hidden rounded-[2.25rem] bg-gradient-to-br from-[#070711] via-[#10101c] to-[#1b0d06] p-6 text-white shadow-[0_32px_90px_rgba(15,23,42,0.28)] md:p-10">
+            <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-orange-500/25 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+
+            <div className="relative">
+              <SectionTitle
+                eyebrow="Trip Cost"
+                title={`${destination.name} budget breakdown`}
+                description="Destination-specific spending guidance for different travel styles."
+              />
+
+              <div className="grid gap-5 lg:grid-cols-3">
+                <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.07] p-6 backdrop-blur">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500 text-2xl">
+                    🎒
+                  </div>
+                  <h3 className="text-2xl font-black text-white">Backpacker</h3>
+                  <p className="mt-4 text-sm font-medium leading-8 text-white/78">
+                    {destination.budgetBreakdown.backpacker}
+                  </p>
+                </div>
+
+                <div className="rounded-[1.75rem] border border-orange-400/30 bg-orange-500/10 p-6 backdrop-blur">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500 text-2xl">
+                    🏨
+                  </div>
+                  <h3 className="text-2xl font-black text-white">Mid-range</h3>
+                  <p className="mt-4 text-sm font-medium leading-8 text-white/78">
+                    {destination.budgetBreakdown.midRange}
+                  </p>
+                </div>
+
+                <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.07] p-6 backdrop-blur">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500 text-2xl">
+                    👑
+                  </div>
+                  <h3 className="text-2xl font-black text-white">Luxury</h3>
+                  <p className="mt-4 text-sm font-medium leading-8 text-white/78">
+                    {destination.budgetBreakdown.luxury}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section> */}
+
+          <section className="relative overflow-hidden rounded-[2.25rem] border border-slate-200 bg-slate-950 p-7 shadow-[0_35px_100px_-50px_rgba(15,23,42,0.9)] md:p-9">
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-orange-500/25 blur-3xl" />
+            <div className="absolute -bottom-28 -left-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
+
+            <div className="relative">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.28em] text-orange-400">
+                Trip Cost
+              </p>
+
+              <h2 className="text-3xl font-black tracking-tight text-white md:text-4xl">
+                {destination.name} budget breakdown
+              </h2>
+
+              <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">
+                Destination-specific spending guidance for backpacker, mid-range, and luxury travel styles.
+              </p>
+
+              <div className="mt-8 grid gap-5">
+                {[
+                  {
+                    title: "Backpacker",
+                    icon: "🎒",
+                    text: destination.budgetBreakdown.backpacker,
+                    badge: "Best for budget trips",
+                  },
+                  {
+                    title: "Mid-range",
+                    icon: "🏨",
+                    text: destination.budgetBreakdown.midRange,
+                    badge: "Most balanced",
+                  },
+                  {
+                    title: "Luxury",
+                    icon: "✨",
+                    text: destination.budgetBreakdown.luxury,
+                    badge: "Premium comfort",
+                  },
+                ].map((item) => (
+                  <article
+                    key={item.title}
+                    className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.06] p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-orange-400/50 hover:bg-white/[0.09]"
+                  >
+                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-orange-400/10 blur-2xl transition group-hover:bg-orange-400/20" />
+
+                    <div className="relative flex flex-col gap-5 md:flex-row md:items-start">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-orange-500 text-2xl shadow-lg shadow-orange-950/30">
+                        {item.icon}
+                      </div>
+
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <h3 className="text-xl font-black text-white">{item.title}</h3>
+                          <span className="rounded-full border border-orange-300/20 bg-orange-400/10 px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-orange-300">
+                            {item.badge}
+                          </span>
+                        </div>
+
+                        <p className="mt-3 text-sm font-medium leading-8 text-slate-300">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Planning"
+                title={`Ideal duration for ${destination.name}`}
+              />
+
+              <p className="text-base leading-9 text-slate-700">
+                {destination.idealDuration}
+              </p>
+            </section>
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Nearby"
+                title={`Nearby places from ${destination.name}`}
+                description="Add these places if you want a longer and more complete route."
+              />
+
+              <NumberedGrid items={destination.nearbyPlaces} />
+            </section>
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Tips"
+                title={`${destination.name} travel tips`}
+                description="Practical advice to avoid common travel mistakes."
+              />
+
+              <NumberedGrid items={destination.travelTips} columns="md:grid-cols-2" />
+            </section>
+
+            {relatedItinerary ? (
+              <section className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-orange-500 via-orange-600 to-slate-950 p-7 text-white shadow-[0_35px_80px_-45px_rgba(249,115,22,0.9)] md:p-9">
+                <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-white/10" />
+                <div className="relative max-w-3xl">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.28em] text-orange-100">
+                    Related itinerary
+                  </p>
+                  <h2 className="text-3xl font-black md:text-4xl">
+                    {relatedItinerary.title}
+                  </h2>
+                  <p className="mt-4 text-base leading-8 text-white/85">
+                    {relatedItinerary.overview}
+                  </p>
+                  <Link
+                    href={`/itineraries/${relatedItinerary.slug}`}
+                    className="mt-7 inline-flex rounded-full bg-white px-7 py-4 text-sm font-black text-slate-950 transition hover:bg-slate-100"
+                  >
+                    Open itinerary
+                  </Link>
+                </div>
+              </section>
+            ) : null}
+
+            {relatedBlog ? (
+              <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+                <SectionHeading
+                  eyebrow="Related blog"
+                  title={relatedBlog.title}
+                  description={relatedBlog.description}
+                />
+
+                <Link
+                  href={`/blog/${relatedBlog.slug}`}
+                  className="inline-flex rounded-full bg-slate-950 px-7 py-4 text-sm font-black text-white transition hover:bg-slate-800"
+                >
+                  Read blog
+                </Link>
+              </section>
+            ) : null}
+
+            <section className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
+              <SectionHeading
+                eyebrow="Questions"
+                title={`FAQs about ${destination.name}`}
+                description="Answers to common questions travelers ask before planning this trip."
+              />
+
+              <div className="space-y-4">
+                {destination.faqs.map((faq, index) => (
+                  <details
+                    key={`${faq.question}-${index}`}
+                    className="group rounded-[1.25rem] border border-slate-200 bg-slate-50 p-5 transition hover:border-orange-200 hover:bg-orange-50/40"
+                  >
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black text-slate-950">
+                      <span>{faq.question}</span>
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-orange-600 shadow-sm transition group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-4 text-sm leading-7 text-slate-600">
+                      {faq.answer}
+                    </p>
+                  </details>
                 ))}
               </div>
             </section>
-          )}
-
-          {relatedBlog && (
-            <section className="mt-16">
-              <div className="mb-6">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Travel Guide
-                </p>
-                <h2 className="mt-2 text-3xl font-black text-zinc-950">
-                  Related guide
-                </h2>
-              </div>
-
-              <Link
-                href={`/blog/${relatedBlog.slug}`}
-                className="group block rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6 transition hover:-translate-y-1 hover:border-orange-200 hover:bg-orange-50 hover:shadow-xl"
-              >
-                <h3 className="text-2xl font-black text-zinc-950">
-                  {relatedBlog.title}
-                </h3>
-
-                <p className="mt-3 leading-7 text-zinc-600">
-                  {relatedBlog.description}
-                </p>
-
-                <span className="mt-5 inline-flex items-center gap-2 font-black text-orange-600">
-                  Read Guide
-                  <ArrowRight
-                    size={17}
-                    className="transition group-hover:translate-x-1"
-                  />
-                </span>
-              </Link>
-            </section>
-          )}
-
-          <section className="mt-16">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
-                <HelpCircle size={24} />
-              </div>
-
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-500">
-                  Questions
-                </p>
-                <h2 className="text-3xl font-black text-zinc-950">FAQs</h2>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {destination.faqs.map((faq) => (
-                <div
-                  key={faq.question}
-                  className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm"
-                >
-                  <h3 className="text-lg font-black text-zinc-950">
-                    {faq.question}
-                  </h3>
-                  <p className="mt-2 leading-7 text-zinc-600">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-
-        <aside className="h-fit rounded-[2rem] border border-zinc-200 bg-zinc-950 p-6 text-white shadow-2xl lg:sticky lg:top-28">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-300">
-            Plan your trip
-          </p>
-
-          <h3 className="mt-3 text-2xl font-black">
-            Start planning {destination.name}
-          </h3>
-
-          <p className="mt-3 text-sm leading-6 text-zinc-300">
-            Compare stays, flights, and travel packages for this destination.
-          </p>
-
-          <div className="mt-6 space-y-3">
-            <Link
-              href={`/trip-planner?destination=${encodeURIComponent(
-                destination.name
-              )}&days=${parseInt(destination.duration)}`}
-              className="block rounded-full bg-orange-500 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-orange-600"
-            >
-              Plan Trip
-            </Link>
-
-            {/* <Link
-              href="/contact"
-              className="block rounded-full border border-white/15 bg-white/10 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white/15"
-            >
-              Book Hotels
-            </Link>
-
-            <Link
-              href="/contact"
-              className="block rounded-full border border-white/15 bg-white/10 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white/15"
-            >
-              Find Flights
-            </Link> 
-
-            <Link
-              href="/contact"
-              className="block rounded-full border border-white/15 bg-white/10 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white/15"
-            >
-              Explore Packages
-            </Link> */}
           </div>
-        </aside>
+
+          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_30px_80px_-55px_rgba(15,23,42,0.6)]">
+              <div className="relative h-44">
+                <Image
+                  src={destination.image}
+                  alt={`${destination.name} trip planner`}
+                  fill
+                  sizes="350px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/35 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-orange-300">
+                    Plan Your Trip
+                  </p>
+                  <h2 className="text-2xl font-black text-white">
+                    {destination.name}
+                  </h2>
+                </div>
+              </div>
+
+              <div className="p-6">
+                <div className="rounded-[1.5rem] bg-slate-50 p-5">
+                  {/* <p className="text-xs font-black uppercase tracking-[0.18em] text-orange-600">
+                    Plan Your Trip
+                  </p> */}
+                  <h3 className="mt-3 text-2xl font-black leading-tight text-slate-950">
+                    Start planning {destination.name}
+                  </h3>
+                  <p className="mt-3 text-sm font-medium leading-7 text-slate-600">
+                    Compare stays, flights, and travel packages for this destination.
+                  </p>
+                </div>
+
+                {/* <Link
+                  href="/plan-trip"
+                  className="mt-5 flex w-full justify-center rounded-full bg-orange-500 px-6 py-4 text-sm font-black text-white transition hover:bg-orange-600"
+                >
+                  Plan Trip
+                </Link> */}
+
+                <Link
+                  href={`/trip-planner?destination=${encodeURIComponent(
+                    destination.name
+                  )}&days=${parseInt(destination.duration)}`}
+                  className="mt-5 flex w-full justify-center rounded-full bg-orange-500 px-6 py-4 text-sm font-black text-white transition hover:bg-orange-600"
+                >
+                  Plan Trip
+                </Link>
+
+              </div>
+            </div>
+
+            {/* {relatedDestinations.length > 0 ? (
+              <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+                <h2 className="text-lg font-black text-slate-950">
+                  Related Destinations
+                </h2>
+
+                <div className="mt-5 space-y-3">
+                  {relatedDestinations.map((item) => (
+                    <Link
+                      key={item.slug}
+                      href={`/destinations/${item.slug}`}
+                      className="group block rounded-2xl border border-slate-200 p-4 transition hover:border-orange-200 hover:bg-orange-50"
+                    >
+                      <p className="font-black text-slate-950 group-hover:text-orange-700">
+                        {item.name}
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-slate-500">
+                        {item.tagline}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : null} */}
+
+          {relatedDestinations.length > 0 ? (
+            <PremiumCardNew className="p-6">
+              <h3 className="text-xl font-black text-zinc-950">
+                Related destinations
+              </h3>
+
+              <div className="mt-5 space-y-4">
+                {relatedDestinations.map((item) => (
+                  <Link
+                    key={item.slug}
+                    href={`/destinations/${item.slug}`}
+                    className="group block overflow-hidden rounded-3xl border border-zinc-200 bg-white transition hover:border-orange-200 hover:bg-orange-50"
+                  >
+                    <div className="relative h-28">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        sizes="320px"
+                        className="object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                      <div className="absolute bottom-3 left-4 right-4">
+                        <p className="text-lg font-black text-white">{item.name}</p>
+                        <p className="text-xs font-semibold text-white/80">
+                          {item.tagline}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </PremiumCardNew>
+          ) : null}
+
+
+          </aside>
+        </div>
       </section>
     </main>
   );
 }
+

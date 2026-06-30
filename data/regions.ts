@@ -28,6 +28,7 @@ export const regions = [
       { name: "Munnar", slug: "munnar" },
       { name: "Kerala", slug: "kerala" },
       { name: "Pondicherry", slug: "pondicherry" },
+      { name: "Ooty", slug: "ooty" },
     ],
   },
 
