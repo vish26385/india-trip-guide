@@ -8050,7 +8050,7 @@ budgetBreakdown: {
 
   budget: "₹10,000 - ₹25,000",
 
-  duration: "2-3 Days",
+  duration: "3-4 Days",
 
   overview: [
     "Coorg is one of Karnataka's most loved hill destinations and is often called the Coffee Country of India. Its landscape is shaped by rolling coffee estates, spice plantations, forested hills, waterfalls, rivers, and mist-covered viewpoints.",
@@ -8224,7 +8224,7 @@ budgetBreakdown: {
   },
 
   idealDuration:
-    "Two to three days are enough for a short Coorg trip covering Madikeri, Abbey Falls, Raja's Seat, coffee plantations, Dubare, and local food. A 4-day trip is better if you want Mandalpatti, Talacauvery, Bylakuppe, Iruppu Falls, plantation relaxation, or a slower resort-style holiday.",
+  "Three to four days are ideal for experiencing Coorg at a comfortable pace. This allows enough time to explore Madikeri, Abbey Falls, Raja's Seat, coffee plantations, Dubare Elephant Camp, Mandalpatti, Talacauvery, Bylakuppe, Iruppu Falls, and local cuisine without rushing. Travelers with limited time can still enjoy the major highlights in two to three days, while a four-day stay offers a more relaxed and complete Coorg experience.",
 
   faqs: [
     {
@@ -8449,7 +8449,7 @@ budgetBreakdown: {
 
   budget: "₹10,000 - ₹25,000",
 
-  duration: "2-3 Days",
+  duration: "3-4 Days",
 
   overview: [
     "Ooty is one of the most popular hill stations in South India and has been a favorite summer retreat for generations. Set in the Nilgiri Hills, it is known for its cool climate, rolling tea estates, lakes, gardens, eucalyptus forests, and old-world charm.",
@@ -8623,7 +8623,7 @@ budgetBreakdown: {
   },
 
   idealDuration:
-    "Two to three days are enough for a short Ooty trip covering Ooty Lake, Botanical Garden, Rose Garden, Doddabetta Peak, tea factory, local shopping, and nearby viewpoints. A 4-day trip is better if you want to add Coonoor, Pykara, Avalanche Lake, Emerald Lake, or a slower hill resort stay without rushing.",
+  "Three to four days are ideal for experiencing Ooty at a relaxed pace. This allows enough time to explore Ooty Lake, Government Botanical Garden, Government Rose Garden, Doddabetta Peak, the Tea Museum and Factory, Nilgiri Mountain Railway, Pykara Lake and Waterfalls, Avalanche Lake, Emerald Lake, and nearby viewpoints without rushing. Travelers with limited time can still cover the major attractions in two to three days, but a four-day stay offers a more complete and enjoyable Ooty experience.",
 
   faqs: [
     {

@@ -2864,44 +2864,191 @@ export const itineraries: Itinerary[] = [
   ]
 },
 
-{
-  slug: "5-days-in-spiti-valley",
+// {
+//   slug: "5-days-in-spiti-valley",
 
-  title: "5 Days in Spiti Valley Itinerary",
+//   title: "5 Days in Spiti Valley Itinerary",
+
+//   destination: "Spiti Valley",
+
+//   duration: "5 Days",
+
+//   budget: "₹18,000 - ₹40,000",
+
+//   image: "/images/spiti-valley.jpg",
+
+//   overview:
+//     "A breathtaking 5-day Spiti Valley itinerary covering ancient monasteries, remote villages, high-altitude landscapes, and one of the most unique Himalayan experiences in India. Perfect for adventure seekers, photographers, and road-trip enthusiasts.",
+
+//   bestFor: [
+//     "Adventure seekers",
+//     "Road trip enthusiasts",
+//     "Nature lovers",
+//     "Photographers",
+//     "Solo travelers"
+//   ],
+
+//   days: [
+//     {
+//       day: "Day 1",
+
+//       title: "Arrival at Kaza & Acclimatization",
+
+//       morning:
+//         "Arrive in Kaza and check into your hotel or homestay. Since Spiti lies at high altitude, take it easy and allow your body to acclimatize.",
+
+//       afternoon:
+//         "Explore the local market, cafés, and enjoy views of the surrounding mountains.",
+
+//       evening:
+//         "Relax and prepare for the upcoming adventures in Spiti Valley.",
+
+//       travelTime:
+//         "10–20 minutes within Kaza.",
+
+//       approximateCost:
+//         "₹2,500 - ₹4,500 per person",
+
+//       foodRecommendation:
+//         "Try Momos, Thukpa, Butter Tea, and simple Tibetan dishes."
+//     },
+
+//     {
+//       day: "Day 2",
+
+//       title: "Key Monastery & Kibber Village",
+
+//       morning:
+//         "Visit the iconic Key Monastery and experience the spiritual atmosphere of one of Spiti's most famous landmarks.",
+
+//       afternoon:
+//         "Continue to Kibber Village and admire the dramatic mountain scenery and traditional Spitian culture.",
+
+//       evening:
+//         "Return to Kaza and spend a peaceful evening at a local café.",
+
+//       travelTime:
+//         "20–45 minutes between attractions.",
+
+//       approximateCost:
+//         "₹2,500 - ₹5,000 per person",
+
+//       foodRecommendation:
+//         "Enjoy Tibetan noodles, local soups, and hot beverages."
+//     },
+
+//     {
+//       day: "Day 3",
+
+//       title: "Langza, Hikkim & Komic Village",
+
+//       morning:
+//         "Visit Langza Village and its giant Buddha statue overlooking the valley.",
+
+//       afternoon:
+//         "Explore Hikkim, home to one of the world's highest post offices, and continue to Komic Village, one of the highest inhabited villages on Earth.",
+
+//       evening:
+//         "Return to Kaza and enjoy the clear Himalayan night sky.",
+
+//       travelTime:
+//         "30–60 minutes between villages.",
+
+//       approximateCost:
+//         "₹2,500 - ₹4,500 per person",
+
+//       foodRecommendation:
+//         "Try traditional Spitian meals and homemade local dishes."
+//     },
+
+//     {
+//       day: "Day 4",
+
+//       title: "Chandratal Lake Excursion",
+
+//       morning:
+//         "Drive towards the stunning Chandratal Lake, one of the most beautiful high-altitude lakes in India.",
+
+//       afternoon:
+//         "Spend time admiring the crystal-clear waters and surrounding mountains while enjoying photography opportunities.",
+
+//       evening:
+//         "Witness a magical sunset and experience the peaceful atmosphere of the Himalayas before returning or camping nearby.",
+
+//       travelTime:
+//         "3–5 hours depending on road conditions.",
+
+//       approximateCost:
+//         "₹3,500 - ₹7,000 per person",
+
+//       foodRecommendation:
+//         "Enjoy simple camp meals, noodles, tea, and local snacks."
+//     },
+
+//     {
+//       day: "Day 5",
+
+//       title: "Breakfast & Departure",
+
+//       morning:
+//         "Enjoy breakfast with beautiful mountain views and spend some quiet moments before leaving Spiti Valley.",
+
+//       afternoon:
+//         "Begin your return journey with unforgettable memories of monasteries, villages, and Himalayan landscapes.",
+
+//       evening:
+//         "Continue your onward journey.",
+
+//       travelTime:
+//         "Depends on your destination and route.",
+
+//       approximateCost:
+//         "₹1,500 - ₹3,000 per person",
+
+//       foodRecommendation:
+//         "Enjoy a final cup of Butter Tea and local snacks before departure."
+//     }
+//   ]
+// },
+
+{
+  slug: "7-days-in-spiti-valley",
+
+  title: "7 Days in Spiti Valley Itinerary",
 
   destination: "Spiti Valley",
 
-  duration: "5 Days",
+  duration: "7 Days",
 
   budget: "₹18,000 - ₹40,000",
 
   image: "/images/spiti-valley.jpg",
 
   overview:
-    "A breathtaking 5-day Spiti Valley itinerary covering ancient monasteries, remote villages, high-altitude landscapes, and one of the most unique Himalayan experiences in India. Perfect for adventure seekers, photographers, and road-trip enthusiasts.",
+    "A comprehensive 7-day Spiti Valley itinerary covering ancient monasteries, remote Himalayan villages, high-altitude lakes, dramatic mountain passes, and breathtaking landscapes. This itinerary offers a balanced pace for travelers who want to experience the cultural, spiritual, and natural beauty of Spiti Valley without rushing. Perfect for adventure seekers, photographers, bikers, and road-trip enthusiasts.",
 
   bestFor: [
     "Adventure seekers",
     "Road trip enthusiasts",
     "Nature lovers",
     "Photographers",
-    "Solo travelers"
+    "Solo travelers",
   ],
 
   days: [
     {
       day: "Day 1",
 
-      title: "Arrival at Kaza & Acclimatization",
+      title: "Arrival in Kaza & Acclimatization",
 
       morning:
-        "Arrive in Kaza and check into your hotel or homestay. Since Spiti lies at high altitude, take it easy and allow your body to acclimatize.",
+        "Arrive in Kaza, the administrative headquarters of Spiti Valley, and check into your hotel or homestay. Since Kaza sits at an altitude of around 3,650 meters, spend the day acclimatizing to reduce the risk of altitude sickness.",
 
       afternoon:
-        "Explore the local market, cafés, and enjoy views of the surrounding mountains.",
+        "Explore Kaza Market, visit local cafés, interact with friendly locals, and enjoy panoramic views of the surrounding mountains.",
 
       evening:
-        "Relax and prepare for the upcoming adventures in Spiti Valley.",
+        "Relax, enjoy an early dinner, and prepare for the exciting days ahead while allowing your body to adjust to the high altitude.",
 
       travelTime:
         "10–20 minutes within Kaza.",
@@ -2910,105 +3057,153 @@ export const itineraries: Itinerary[] = [
         "₹2,500 - ₹4,500 per person",
 
       foodRecommendation:
-        "Try Momos, Thukpa, Butter Tea, and simple Tibetan dishes."
+        "Try Momos, Thukpa, Butter Tea, Tingmo, and traditional Tibetan dishes.",
     },
 
     {
       day: "Day 2",
 
-      title: "Key Monastery & Kibber Village",
+      title: "Key Monastery, Kibber & Chicham Bridge",
 
       morning:
-        "Visit the iconic Key Monastery and experience the spiritual atmosphere of one of Spiti's most famous landmarks.",
+        "Visit the iconic Key Monastery, the largest and most famous monastery in Spiti Valley, known for its centuries-old Buddhist heritage and spectacular hilltop location.",
 
       afternoon:
-        "Continue to Kibber Village and admire the dramatic mountain scenery and traditional Spitian culture.",
+        "Continue to Kibber Village before visiting the remarkable Chicham Bridge, one of Asia's highest suspension bridges, offering breathtaking views of the deep gorge below.",
 
       evening:
-        "Return to Kaza and spend a peaceful evening at a local café.",
+        "Return to Kaza and spend a peaceful evening at a café or enjoy the clear mountain skies.",
 
       travelTime:
-        "20–45 minutes between attractions.",
+        "20–60 minutes between attractions.",
 
       approximateCost:
         "₹2,500 - ₹5,000 per person",
 
       foodRecommendation:
-        "Enjoy Tibetan noodles, local soups, and hot beverages."
+        "Enjoy Tibetan noodles, soups, momos, yak cheese dishes, and local bakery items.",
     },
 
     {
       day: "Day 3",
 
-      title: "Langza, Hikkim & Komic Village",
+      title: "Langza, Hikkim & Komic Circuit",
 
       morning:
-        "Visit Langza Village and its giant Buddha statue overlooking the valley.",
+        "Drive to Langza Village, famous for its giant Buddha statue overlooking the valley and fossil-rich landscape.",
 
       afternoon:
-        "Explore Hikkim, home to one of the world's highest post offices, and continue to Komic Village, one of the highest inhabited villages on Earth.",
+        "Visit Hikkim, home to one of the world's highest post offices, before continuing to Komic, among the world's highest motorable villages with an ancient monastery and stunning Himalayan views.",
 
       evening:
-        "Return to Kaza and enjoy the clear Himalayan night sky.",
+        "Return to Kaza and relax after a memorable day exploring some of Spiti's highest villages.",
 
       travelTime:
-        "30–60 minutes between villages.",
+        "30–75 minutes between villages.",
 
       approximateCost:
-        "₹2,500 - ₹4,500 per person",
+        "₹2,500 - ₹5,000 per person",
 
       foodRecommendation:
-        "Try traditional Spitian meals and homemade local dishes."
+        "Enjoy homemade Spitian meals, barley dishes, noodles, butter tea, and local snacks.",
     },
 
     {
       day: "Day 4",
 
-      title: "Chandratal Lake Excursion",
+      title: "Dhankar Monastery & Pin Valley National Park",
 
       morning:
-        "Drive towards the stunning Chandratal Lake, one of the most beautiful high-altitude lakes in India.",
+        "Visit the spectacular Dhankar Monastery, dramatically perched on a cliff overlooking the confluence of the Spiti and Pin Rivers. Explore the monastery and enjoy breathtaking valley views.",
 
       afternoon:
-        "Spend time admiring the crystal-clear waters and surrounding mountains while enjoying photography opportunities.",
+        "Continue to Pin Valley National Park and visit Mud Village, surrounded by dramatic Himalayan scenery and traditional Spitian villages.",
 
       evening:
-        "Witness a magical sunset and experience the peaceful atmosphere of the Himalayas before returning or camping nearby.",
+        "Return to Kaza while enjoying sunset views over the mountains.",
 
       travelTime:
-        "3–5 hours depending on road conditions.",
+        "1–2 hours between attractions.",
 
       approximateCost:
-        "₹3,500 - ₹7,000 per person",
+        "₹3,000 - ₹5,500 per person",
 
       foodRecommendation:
-        "Enjoy simple camp meals, noodles, tea, and local snacks."
+        "Enjoy traditional Spitian cuisine, fresh local meals, and hot tea in village cafés.",
     },
 
     {
       day: "Day 5",
 
-      title: "Breakfast & Departure",
+      title: "Chandratal Lake Adventure",
 
       morning:
-        "Enjoy breakfast with beautiful mountain views and spend some quiet moments before leaving Spiti Valley.",
+        "Depart early for the spectacular Chandratal Lake via Kunzum Pass (seasonal). The journey itself offers some of the most scenic mountain roads in the Himalayas.",
 
       afternoon:
-        "Begin your return journey with unforgettable memories of monasteries, villages, and Himalayan landscapes.",
+        "Spend time walking around the crystal-clear Chandratal Lake while enjoying unforgettable views of the surrounding snow-capped peaks.",
 
       evening:
-        "Continue your onward journey.",
+        "Experience a magical Himalayan sunset and, if staying overnight, admire one of India's best stargazing locations.",
 
       travelTime:
-        "Depends on your destination and route.",
+        "4–6 hours depending on road and weather conditions.",
+
+      approximateCost:
+        "₹3,500 - ₹7,000 per person",
+
+      foodRecommendation:
+        "Enjoy simple camp meals, noodles, soup, tea, and light snacks.",
+    },
+
+    {
+      day: "Day 6",
+
+      title: "Kunzum Pass, Losar & Scenic Return",
+
+      morning:
+        "Visit Kunzum Pass if weather permits and stop at Losar Village, one of the last settlements before entering Spiti from Manali.",
+
+      afternoon:
+        "Enjoy photography stops along mountain viewpoints, rivers, and remote landscapes before returning towards Kaza or your accommodation depending on your travel route.",
+
+      evening:
+        "Spend your final evening in Spiti enjoying local hospitality and reflecting on the unforgettable journey.",
+
+      travelTime:
+        "3–5 hours depending on route.",
+
+      approximateCost:
+        "₹2,500 - ₹4,500 per person",
+
+      foodRecommendation:
+        "Enjoy authentic Himalayan meals, Tibetan bread, momos, soups, and butter tea.",
+    },
+
+    {
+      day: "Day 7",
+
+      title: "Departure from Spiti Valley",
+
+      morning:
+        "Enjoy breakfast while taking in the final views of the majestic Himalayas before checking out from your accommodation.",
+
+      afternoon:
+        "Begin your return journey via Manali or Shimla depending on your chosen route, carrying unforgettable memories of Spiti Valley's monasteries, villages, lakes, and mountain landscapes.",
+
+      evening:
+        "Continue your onward journey toward your next destination.",
+
+      travelTime:
+        "Depends on your onward destination and chosen route.",
 
       approximateCost:
         "₹1,500 - ₹3,000 per person",
 
       foodRecommendation:
-        "Enjoy a final cup of Butter Tea and local snacks before departure."
-    }
-  ]
+        "Enjoy a final cup of Butter Tea, Tibetan bread, and local snacks before leaving Spiti Valley.",
+    },
+  ],
 },
 
 {
